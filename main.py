@@ -1,15 +1,28 @@
-from flask import Flask
-app = Flask(__name__)
+import discord
+import asyncio
 
+client = discord.Client()
 
-@app.route('/')
-def index():
-    return "hi"
-    pass
+@client.event
+async def on_ready():
+    print('Logged in as')
+    print(client.user.name)
+    print(client.user.id)
+    print('------')
 
-@app.route('/recommendation', methods=['POST'])
-def get_recommendation():
-    pass
+@client.event
+async def on_message(message):
+    if message.content.startswith('!test'):
+        counter = 0
+        tmp = await client.send_message(message.channel, 'Calculating messages...')
+        async for log in client.logs_from(message.channel, limit=100):
+            if log.author == message.author:
+                counter += 1
 
-if __name__ == '__main__':
-    app.run(debug=True)
+        await client.edit_message(tmp, 'You have {} messages.'.format(counter))
+    elif message.content.startswith('!sleep'):
+        await asyncio.sleep(5)
+        await client.send_message(message.channel, 'Done sleeping')
+
+client.run('NTAyNTg5MzM2NzA2MDg4OTYy.Dqqr3w.vQdTF0dW6yiT8e8X_e8ZqcCEF1w')
+print("running")
