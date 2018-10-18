@@ -1,28 +1,20 @@
 import discord
+from discord.ext.commands import Bot
+from discord.ext import commands
 import asyncio
+import time
+import os
 
-client = discord.Client()
+Client = discord.Client()
+client = commands.Bot(command_prefix = ".")
 
 @client.event
 async def on_ready():
-    print('Logged in as')
-    print(client.user.name)
-    print(client.user.id)
-    print('------')
+    print("hello")
+    await client.change_presence(game=discord.Game(name="videos"))
 
 @client.event
 async def on_message(message):
-    if message.content.startswith('!test'):
-        counter = 0
-        tmp = await client.send_message(message.channel, 'Calculating messages...')
-        async for log in client.logs_from(message.channel, limit=100):
-            if log.author == message.author:
-                counter += 1
-
-        await client.edit_message(tmp, 'You have {} messages.'.format(counter))
-    elif message.content.startswith('!sleep'):
-        await asyncio.sleep(5)
-        await client.send_message(message.channel, 'Done sleeping')
-
-client.run('NTAyNTg5MzM2NzA2MDg4OTYy.Dqqr3w.vQdTF0dW6yiT8e8X_e8ZqcCEF1w')
-print("running")
+    if message.content.startswith('.hello'):
+        msg = 'Hello {0.author.mention} How are you today?'.format(message)
+        await client.send_message(message.channel,msg)
