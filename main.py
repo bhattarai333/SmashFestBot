@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    return "hi"
     pass
 
 @app.route('/recommendation', methods=['POST'])
