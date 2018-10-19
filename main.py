@@ -20,7 +20,7 @@ class SmashFest:
     numSetups = 0
 
     def __init__(self, owner, location, startTime):
-        self.owner = str.split(owner, '#')[0]
+        self.owner = owner#str.split(owner, '#')[0]
         self.location = location
         self.startTime = startTime
 
@@ -63,33 +63,40 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    sender = message.author
-    if sender == "Smashfest Bot#9788":
-        return
     originalMessage = message.content
     message.content = message.content.lower()
+    if message.author == "Smashfest Bot#9788":
+        return
+
 
     if message.content.startswith('!hello') or message.content.startswith("!hi"):
         msg = 'Hello {0.author.mention} How are you today?'.format(message)
         await client.send_message(message.channel, msg)
+
     if message.content.startswith("!mario"):
         msg = "J3's Mario is sick af"
         await client.send_message(message.channel, msg)
+
     if message.content.startswith("!69"):
         msg = "Nice"
         await client.send_message(message.channel, msg)
+
     if message.content.startswith("!ness"):
         msg = "Ness sux"
         await client.send_message(message.channel, msg)
+
     if message.content.startswith("!mario"):
         msg = "J3 has a sick Mario"
         await client.send_message(message.channel, msg)
+
     if message.content.startswith("pizza house"):
         msg = "BDubs is better"
         await client.send_message(message.channel, msg)
+
     if message.content.startswith("bdubs"):
         msg = ":bdubs:"
         await client.send_message(message.channel, msg)
+
     if message.content.startswith("!carter"):
         msg = "Money match me {0.author.mention}, you won't".format(message)
         await client.send_message(message.channel, msg)
@@ -97,10 +104,8 @@ async def on_message(message):
     if message.content.startswith("!create"):
         try:
             messageString = str(originalMessage)
-            print("MESSAGE: %s" % messageString)
             parts = messageString.split("/")
-            print(parts)
-            sf = SmashFest(sender, parts[1], parts[2])
+            sf = SmashFest(str(message.author), parts[1], parts[2])
             smashfests.append(sf)
             msg = "Created smashfest, currently #%s smashfest(s) planned" % len(smashfests)
         except IndexError:
@@ -165,7 +170,7 @@ async def on_message(message):
                 parts = messageString.split("/")
                 index = int(parts[1])
 
-
+                sender = str(message.author)
                 owner = smashfests[index].owner
 
                 print("S: %s O:%s" % (sender, owner))
