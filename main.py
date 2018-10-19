@@ -128,7 +128,7 @@ async def on_message(message):
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
                 fest = int(parts[1])
-                smashfests[fest].addParticipant(message.author)
+                smashfests[fest].addParticipant(str(message.author))
                 msg = "Added you to smashfest #%s {0.author.mention}".format(fest, message) % fest
             except IndexError or TypeError:
                 msg = "Format your message like this: !addme/1"
@@ -170,7 +170,7 @@ async def on_message(message):
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
                 index = int(parts[1])
-                if message.author != smashfests[index].owner:
+                if str(message.author) != smashfests[index].owner:
                     msg = "You're not the owner of this fest!"
                 else:
                     smashfests.pop(index)
