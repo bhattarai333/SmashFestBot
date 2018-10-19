@@ -76,7 +76,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
 
     if message.content.startswith("!carter"):
-        msg = "Money match me {0.author.mention}, you won't".format(message)
+        msg = "Money match me {message.author}, you won't".format(message)
         await client.send_message(message.channel, msg)
 
     if message.content.startswith("!tommy"):
