@@ -75,8 +75,10 @@ class SmashFest:
             print(self.participants[participant])
             if participant[0] == 1:
                 setups += 1
+                print("ADD SETUP")
             if participant[1] == 1:
                 monitors += 1
+                print("ADD MONITOR")
             self.monitors = monitors
             self.numSetups = setups
 
