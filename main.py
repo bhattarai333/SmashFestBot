@@ -83,11 +83,16 @@ async def on_message(message):
         msg = "Money match me {0.author.mention}, you won't".format(message)
         await client.send_message(message.channel, msg)
 
+    if message.content.startswith("!create"):
+        try:
+            messageString = str(message.content)
+            parts = messageString.split("/")
+            sf = SmashFest(message.author, parts[1], parts[2])
+            msg = "Created smashfest, currently #%s smashfest(s) planned" % len(smashfests)
+        except IndexError:
+            msg = "Format your message like this: !create/Snyphi Basement/7:30 PM"
+        await client.send_message(message.channel, msg)
 
 
-Bot = commands.Bot(command_prefix="!create")
-@client.command()
-async def test(ctx, *args):
-    await ctx.send('{} arguments: {}'.format(len(args), ', '.join(args)))
 
 client.run('NTAyNTg5MzM2NzA2MDg4OTYy.Dqqr3w.vQdTF0dW6yiT8e8X_e8ZqcCEF1w')
