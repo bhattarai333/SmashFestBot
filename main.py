@@ -106,7 +106,7 @@ async def on_message(message):
         try:
             messageString = str(originalMessage)
             parts = messageString.split("/")
-            sf = SmashFest(str(message.author), parts[1], parts[2])
+            sf = SmashFest(sender, parts[1], parts[2])
             smashfests.append(sf)
             msg = "Created smashfest, currently #%s smashfest(s) planned" % len(smashfests)
         except IndexError:
