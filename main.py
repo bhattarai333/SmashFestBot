@@ -105,7 +105,6 @@ async def on_message(message):
         try:
             messageString = str(originalMessage)
             parts = messageString.split("/")
-            print(parts)
             sf = SmashFest(str(message.author), parts[1], parts[2])
             smashfests.append(sf)
             msg = "Created smashfest, currently #%s smashfest(s) planned" % len(smashfests)
@@ -170,7 +169,13 @@ async def on_message(message):
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
                 index = int(parts[1])
-                if str(message.author) != smashfests[index].owner:
+
+                sender = str(message.author)
+                owner = smashfests[index].owner
+
+                print("S: %s O:%s" % (sender, owner))
+
+                if sender != owner:
                     msg = "You're not the owner of this fest!"
                 else:
                     smashfests.pop(index)
