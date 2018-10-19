@@ -71,23 +71,26 @@ async def on_message(message):
         msg = "BDubs is better"
         await client.send_message(message.channel, msg)
 
+    if message.content.startswith("bdubs"):
+        msg = ":bdubs:"
+        await client.send_message(message.channel, msg)
+
     if message.content.startswith("!carter"):
         msg = "Money match me {0.author.mention}, you won't".format(message)
         await client.send_message(message.channel, msg)
 
-    if message.content.startswith("tommy"):
-        msg = "Tommy sux"
+    if message.content.startswith("!tommy"):
+        msg = "Tommy sux{0.author.mention}".format(message)
         await client.send_message(message.channel, msg)
 
     if message.content.startswith('!create'):
         try:
             parts = str.split(message.content, '/')
             sf = SmashFest(message.author, parts[1], parts[2])
-        except IndexError:
-            return
-
-        smashfests.append(sf)
-        msg = str(sf.owner) + " " + str(sf.location) + " " + str(sf.startTime)
+            smashfests.append(sf)
+            msg = str(sf.owner) + " " + str(sf.location) + " " + str(sf.startTime)
+        except:
+            msg = "Format your message like this: !create/Snyphi Basement/7:30 PM"
         await client.send_message(message.channel, msg)
 
 client.run('NTAyNTg5MzM2NzA2MDg4OTYy.Dqqr3w.vQdTF0dW6yiT8e8X_e8ZqcCEF1w')
