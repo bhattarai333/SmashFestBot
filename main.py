@@ -86,7 +86,7 @@ class SmashFest:
 
 Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
-
+server = None
 
 smashfests = list()
 
@@ -98,9 +98,7 @@ async def on_ready():
 async def on_message(message):
     originalMessage = message.content
     message.content = message.content.lower()
-    print(message.author)
     if message.author.id == client.user.id:
-        print("returning")
         return
 
     if message.content.startswith('!hello') or message.content.startswith("!hi"):
@@ -130,13 +128,13 @@ async def on_message(message):
 
     if message.content.startswith("!help"):
         await client.send_message(message.channel, "!create/LOCATION/START TIME/NUMBER OF SETUPS IN ROOM/NUMBER OF MONITORS IN ROOM    Creates a smashfest that others can join")
-        await client.send_message(message.channel, "!list/SMASHFEST NUMBER                                                             Lets you view information about a smashfest including smashfest number, where and when it is and how many people/setups there are")
-        await client.send_message(message.channel, "!addme/SMASHFEST NUMBER/BRINGING A SETUP/BRINGING A MONITOR                        Lets you join a smashfest and specify if you're bringing a monitor or a setup or both")
+        await client.send_message(message.channel, "!list/SMASHFEST NUMBER                                                             Lets you view information about a smashfest")
+        await client.send_message(message.channel, "!addme/SMASHFEST NUMBER/BRINGING A SETUP/BRINGING A MONITOR                        Lets you join a smashfest")
         await client.send_message(message.channel, "!removeme/SMASHFEST NUMBER                                                         Removes you from a smashfest")
         await client.send_message(message.channel, "!participants/SMASHFEST NUMBER                                                     Displays the participants of a smashfest")
-        await client.send_message(message.channel, "!setups/SMASHFEST NUMBER                                                           Displays how many setups and participants are at a fest")
-        await client.send_message(message.channel, "!monitors/SMASHFEST NUMBER                                                         Displays how many monitors and participants there are at a fest")
-        await client.send_message(message.channel, "!end/SMASHFEST NUMBER                                                              Ends a smashfest, can only be called by the owner of a fest")
+        await client.send_message(message.channel, "!setups/SMASHFEST NUMBER                                                           Displays how many setups are at a fest")
+        await client.send_message(message.channel, "!monitors/SMASHFEST NUMBER                                                         Displays how many monitors are at a fest")
+        await client.send_message(message.channel, "!end/SMASHFEST NUMBER                                                              Ends a smashfest")
 
 
 
