@@ -28,7 +28,7 @@ class SmashFest:
         self.participants.append(participant)
 
     def tostr(self, index):
-        output = "Smashfest #%s Owner: %s Location: %s Time: %s Setups: %s\n" % (index, self.owner, self.location, self.startTime, self.currentSetups)
+        output = "Smashfest #%s Owner: %s Location: %s Time: %s Setups: %s\n" % (index, self.owner, self.location, self.startTime, self.numSetups)
         return output
 
     def addParticipants(self, person):
