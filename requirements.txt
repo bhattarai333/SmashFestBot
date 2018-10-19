@@ -1,4 +1,5 @@
 discord.py==0.16.12
+discord
 websockets
 aiohttp
 asyncio
