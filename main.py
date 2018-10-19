@@ -13,10 +13,12 @@ import os
 
 class SmashFest:
     owner = "MSU | BlueFlare10"
-    participants = list()
+    participants ={}
     location = "Communication Arts Building, Room 154"
     startTime = "6:00 PM"
-    currentSetups = 0
+    initialMonitors = 0
+    initialSetups = 0
+    monitors = 0
     numSetups = 0
 
     def __init__(self, owner, location, startTime):
@@ -24,15 +26,26 @@ class SmashFest:
         self.location = location
         self.startTime = startTime
 
-    def addParticipants(self, participant):
-        self.participants.append(participant)
+    def addParticipants(self, participant, setup, monitor):
+        self.addParticipant(participant, setup, monitor)
 
     def tostr(self, index):
-        output = "Smashfest #%s Owner: %s Location: %s Time: %s Setups: %s\n" % (index, self.owner, self.location, self.startTime, self.numSetups)
+        output = "Smashfest #%s Owner: %s Location: %s Time: %s Setups: %s Monitors: %s\n" % (index, self.owner, self.location, self.startTime, self.getSetups(), self.getMonitors())
         return output
 
-    def addParticipant(self, person):
-        self.participants.append(person)
+    def addParticipant(self, person, setup, monitor):
+        setup = setup.trim()
+        monitor = monitor.trim()
+        if setup == "yes":
+            setup = 1
+        else:
+            setup = 0
+        if monitor == "yes":
+            monitor = 1
+        else:
+            setup = 0
+        info = (setup, monitor)
+        self.participants[person] = info
 
     def listParticipants(self):
         output = ""
@@ -45,7 +58,26 @@ class SmashFest:
         self.numSetups += 1
 
     def getSetups(self):
-        return self.numSetups
+        self.findInfo()
+        return self.numSetups + self.initialSetups
+
+    def addMonitor(self):
+        self.monitors += 1
+
+    def getMonitors(self):
+        self.findInfo()
+        return self.monitors + self.initialMonitors
+
+    def findInfo(self):
+        setups = 0
+        monitors = 0
+        for participant in self.participants:
+            if participant[0] == 1:
+                setups += 1
+            if participant[1] == 1:
+                monitors += 1
+            self.monitors = monitors
+            self.numSetups = setups
 
 
 
@@ -98,10 +130,12 @@ async def on_message(message):
             messageString = str(originalMessage)
             parts = messageString.split("/")
             sf = SmashFest(str(message.author), parts[1], parts[2])
+            sf.initialSetups = (parts[3])
+            sf.initialMonitors = (parts[4])
             smashfests.append(sf)
             msg = "Created smashfest, currently %s smashfest(s) planned" % len(smashfests)
         except IndexError:
-            msg = "Format your message like this: !create/Snyphi Basement/7:34 PM"
+            msg = "Format your message like this(don't include parentheses): !create/Snyphi Basement(location)/7:34 PM(Start Time)/1(setup)/2(monitors)"
         await client.send_message(message.channel, msg)
 
     if message.content.startswith("!list"):
@@ -117,14 +151,28 @@ async def on_message(message):
         if not len(smashfests) == 0:
             try:
                 messageString = str(originalMessage)
-                print(messageString)
                 parts = messageString.split("/")
-                print(parts)
                 fest = int(parts[1])
-                smashfests[fest].addParticipant(str(message.author))
+                setup = parts[2]
+                monitor = parts[3]
+                smashfests[fest].addParticipant(str(message.author), setup, monitor)
                 msg = "Added you to smashfest #%s {0.author.mention}".format(message) % fest
             except IndexError or TypeError:
-                msg = "Format your message like this: !addme/1"
+                msg = "Format your message like this: !addme/1(Smashfest number)/yes(setup)/no(monitor)"
+        else:
+            msg = "There are no current smashfests, try creating one with !create"
+        await client.send_message(message.channel, msg)
+
+    if message.content.startswith("!removeme"):
+        if not len(smashfests) == 0:
+            try:
+                messageString = str(originalMessage)
+                parts = messageString.split("/")
+                fest = int(parts[1])
+                smashfests[fest].addParticipant(str(message.author))
+                msg = "Removed you from smashfest #%s {0.author.mention}".format(message) % fest
+            except IndexError or TypeError:
+                msg = "Format your message like this: !removeme/1(Smashfest number)"
         else:
             msg = "There are no current smashfests, try creating one with !create"
         await client.send_message(message.channel, msg)
@@ -137,12 +185,12 @@ async def on_message(message):
                 fest = int(parts[1])
                 msg = smashfests[fest].listParticipants()
             except IndexError or TypeError:
-                msg = "Format your message like this: !participants/1"
+                msg = "Format your message like this: !participants/1(Smashfest number)"
         else:
             msg = "There are no current smashfests, try creating one with !create"
         await client.send_message(message.channel, msg)
 
-    if message.content.startswith("!setups"):
+    if message.content.startswith("!setups") or message.content.startswith("!monitors"):
         if not len(smashfests) == 0:
             try:
                 messageString = str(originalMessage)
@@ -150,12 +198,14 @@ async def on_message(message):
                 fest = int(parts[1])
                 setups = smashfests[fest].getSetups()
                 participants = len(smashfests[fest].participants)
-                msg = "Smashfest #%s has %s participant(s) and %s setup(s)" % (fest, participants, setups)
+                monitors = smashfests[fest].getMonitors()
+                msg = "Smashfest #%s has %s participant(s), %s monitor(s) and %s setup(s)" % (fest, participants, monitors, setups)
             except IndexError or TypeError:
-                msg = "Format your message like this: !setups/1"
+                msg = "Format your message like this: !setups/1(Smashfest number)"
         else:
             msg = "There are no current smashfests, try creating one with !create"
         await client.send_message(message.channel, msg)
+
 
     if message.content.startswith("!end"):
         if not len(smashfests) == 0:
