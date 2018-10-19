@@ -45,7 +45,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     message.content = message.content.lower()
-    if message.author = "Smashfest Bot#9788":
+    if message.author == "Smashfest Bot#9788":
         return
     if message.content.startswith('!hello'):
         msg = 'Hello {0.author.mention} How are you today?'.format(message)
