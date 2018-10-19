@@ -46,7 +46,6 @@ async def on_ready():
 @client.event
 async def on_message(message):
     message.content = message.content.lower()
-    message.server
     if message.author == "Smashfest Bot#9788":
         return
 
@@ -87,7 +86,7 @@ async def on_message(message):
         try:
             messageString = str(message.content)
             parts = messageString.split("/")
-            #sf = SmashFest(message.author, parts[1], parts[2])
+            sf = SmashFest(message.author, parts[1], parts[2])
             #smashfests.append(sf)
             #msg = "Created smashfest, currently #%s smashfest(s) planned" % len(smashfests)
             msg = "Success"
