@@ -63,10 +63,11 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    sender = message.author
+    if sender == "Smashfest Bot#9788":
+        return
     originalMessage = message.content
     message.content = message.content.lower()
-    if message.author == "Smashfest Bot#9788":
-        return
 
 
     if message.content.startswith('!hello') or message.content.startswith("!hi"):
@@ -170,7 +171,7 @@ async def on_message(message):
                 parts = messageString.split("/")
                 index = int(parts[1])
 
-                sender = str(message.author)
+
                 owner = smashfests[index].owner
 
                 print("S: %s O:%s" % (sender, owner))
