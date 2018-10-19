@@ -36,6 +36,7 @@ class SmashFest:
 Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
 
+
 smashfests = list()
 
 @client.event
@@ -45,8 +46,11 @@ async def on_ready():
 @client.event
 async def on_message(message):
     message.content = message.content.lower()
+    message.server
     if message.author == "Smashfest Bot#9788":
         return
+
+
     if message.content.startswith('!hello'):
         msg = 'Hello {0.author.mention} How are you today?'.format(message)
         await client.send_message(message.channel, msg)
@@ -76,11 +80,11 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
 
     if message.content.startswith("!carter"):
-        msg = "Money match me {author.mention}, you won't".format(message)
+        msg = "Money match me {0.author.mention}, you won't".format(message)
         await client.send_message(message.channel, msg)
 
     if message.content.startswith("!tommy"):
-        msg = "Tommy sux{0.message.author}".format(message)
+        msg = "Tommy sux{message.author}".format(message)
         await client.send_message(message.channel, msg)
 
     if message.content.startswith('!create'):
