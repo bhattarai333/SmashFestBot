@@ -75,7 +75,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
 
     if message.content.startswith("bdubs"):
-        msg = ":bdubs: %s" % message.author
+        msg = ":bdubs:"
         await client.send_message(message.channel, msg)
 
     if message.content.startswith("!carter"):
@@ -86,12 +86,12 @@ async def on_message(message):
         try:
             messageString = str(message.content)
             parts = messageString.split("/")
-            sf = SmashFest(message.author, parts[1], parts[2])
+            sf = SmashFest(str(message).author, parts[1], parts[2])
             #smashfests.append(sf)
             #msg = "Created smashfest, currently #%s smashfest(s) planned" % len(smashfests)
-            msg = "Success"
+            msg = "Success2"
         except IndexError:
-            msg = "Format your message like this: !create/Snyphi Basement/7:31 PM"
+            msg = "Format your message like this: !create/Snyphi Basement/7:32 PM"
         await client.send_message(message.channel, msg)
 
 
