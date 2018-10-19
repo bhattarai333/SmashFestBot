@@ -99,7 +99,7 @@ async def on_message(message):
     originalMessage = message.content
     message.content = message.content.lower()
     print(message.author)
-    if message.author == "Smashfest Bot#9788":
+    if message.author.id == client.user.id:
         print("returning")
         return
 
