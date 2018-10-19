@@ -19,5 +19,5 @@ async def on_message(message):
         msg = 'Hello {0.author.mention} How are you today?'.format(message)
         await client.send_message(message.channel,msg)
 
-client.run(os.getenv('NTAyNTg5MzM2NzA2MDg4OTYy.Dqqr3w.vQdTF0dW6yiT8e8X_e8ZqcCEF1w'))
+client.run('NTAyNTg5MzM2NzA2MDg4OTYy.Dqqr3w.vQdTF0dW6yiT8e8X_e8ZqcCEF1w')
 print('running')
