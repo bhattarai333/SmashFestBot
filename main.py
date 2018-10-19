@@ -84,7 +84,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
 
     if message.content.startswith("!tommy"):
-        msg = "Tommy sux{message.author}".format(message)
+        msg = "Tommy sux %s" % message.author
         await client.send_message(message.channel, msg)
 
     if message.content.startswith('!create'):
