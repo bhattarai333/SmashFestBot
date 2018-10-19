@@ -72,11 +72,11 @@ class SmashFest:
         setups = 0
         monitors = 0
         for participant in self.participants:
-            print(self.participants[participant])
-            if participant[0] == 1:
+            print("S: %s M: %s" %(participant[0], participant[1]))
+            if participant[0] == 1 or participant[0] == '1':
                 setups += 1
                 print("ADD SETUP")
-            if participant[1] == 1:
+            if participant[1] == 1 or participant[1] == '1':
                 monitors += 1
                 print("ADD MONITOR")
             self.monitors = monitors
