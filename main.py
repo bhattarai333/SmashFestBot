@@ -51,7 +51,7 @@ async def on_message(message):
         return
 
 
-    if message.content.startswith('!hello'):
+    if message.content.startswith('!hello') or message.content.startswith("!hi"):
         msg = 'Hello {0.author.mention} How are you today?'.format(message)
         await client.send_message(message.channel, msg)
 
