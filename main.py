@@ -43,7 +43,7 @@ class SmashFest:
         if monitor == "yes" or int(monitor) > 0:
             monitor = 1
         else:
-            setup = 0
+            monitor = 0
         info = (setup, monitor)
         self.participants[person] = info
 
