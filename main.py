@@ -169,8 +169,11 @@ async def on_message(message):
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
                 index = int(parts[1])
-                smashfests.pop(index)
-                msg = "Removed smashfest #%s" % index
+                if message.author != smashfests[index].owner:
+                    msg = "You're not the owner of this fest!"
+                else:
+                    smashfests.pop(index)
+                    msg = "Removed smashfest #%s" % index
             except IndexError or TypeError:
                 msg = "Format your message like this: !end/1"
         else:
