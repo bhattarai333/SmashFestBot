@@ -31,7 +31,7 @@ class SmashFest:
         output = "Smashfest #%s Owner: %s Location: %s Time: %s Setups: %s\n" % (index, self.owner, self.location, self.startTime, self.numSetups)
         return output
 
-    def addParticipants(self, person):
+    def addParticipant(self, person):
         self.participants.append(person)
 
     def listParticipants(self):
@@ -156,7 +156,8 @@ async def on_message(message):
                 parts = messageString.split("/")
                 fest = int(parts[1])
                 setups = smashfests[fest].getSetups()
-                msg = "Smashfest #%s has %s setup(s)" % (fest, setups)
+                participants = len(smashfests[fest].participants)
+                msg = "Smashfest #%s has %s participant(s) and %s setup(s)" % (fest, participants, setups)
             except IndexError or TypeError:
                 msg = "Format your message like this: !setups/1"
         else:
