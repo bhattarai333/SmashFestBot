@@ -20,7 +20,7 @@ class SmashFest:
     numSetups = 0
 
     def __init__(self, owner, location, startTime):
-        self.owner = owner
+        self.owner = str.split(owner, '#')[0]
         self.location = location
         self.startTime = startTime
 
@@ -67,9 +67,9 @@ async def on_message(message):
     if message.content.startswith('!create'):
         parts = str.split(message.content, '/')
 
-        sf = SmashFest(message.author, parts[0], parts[1])
+        sf = SmashFest(message.author, parts[1], parts[2])
         smashfests.append(sf)
-        msg = str(sf.owner) + str(sf.location) + str(sf.startTime)
+        msg = str(sf.owner) + " " + str(sf.location) + " " + str(sf.startTime)
         await client.send_message(message.channel, msg)
 
 client.run('NTAyNTg5MzM2NzA2MDg4OTYy.Dqqr3w.vQdTF0dW6yiT8e8X_e8ZqcCEF1w')
