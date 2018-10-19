@@ -89,12 +89,13 @@ async def on_message(message):
 
     if message.content.startswith('!create'):
         try:
-            parts = str.split(message.content, '/')
+            parts = str.split(message.content, '!')
             sf = SmashFest(message.author, parts[1], parts[2])
             smashfests.append(sf)
-            msg = str(sf.owner) + " " + str(sf.location) + " " + str(sf.startTime)
+            #msg = str(sf.owner) + " " + str(sf.location) + " " + str(sf.startTime)
+            msg = "hello"
         except:
-            msg = "Format your message like this: !create/Snyphi Basement/7:30 PM"
+            msg = "Format your message like this: !create!Snyphi Basement!7:30 PM"
         await client.send_message(message.channel, msg)
 
 client.run('NTAyNTg5MzM2NzA2MDg4OTYy.Dqqr3w.vQdTF0dW6yiT8e8X_e8ZqcCEF1w')
