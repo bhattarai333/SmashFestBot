@@ -122,7 +122,7 @@ async def on_message(message):
                 print(parts)
                 fest = int(parts[1])
                 smashfests[fest].addParticipant(str(message.author))
-                msg = "Added you to smashfest #%s {0.author.mention}".format(fest, message) % fest
+                msg = "Added you to smashfest #%s {0.author.mention}".format(message) % fest
             except IndexError or TypeError:
                 msg = "Format your message like this: !addme/1"
         else:
