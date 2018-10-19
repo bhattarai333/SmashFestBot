@@ -149,7 +149,7 @@ async def on_message(message):
 
     if message.content.startswith("!addme"):
         if not len(smashfests) == 0:
-            try:
+            #try:
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
                 fest = int(parts[1])
@@ -157,8 +157,8 @@ async def on_message(message):
                 monitor = parts[3]
                 smashfests[fest].addParticipant(str(message.author), setup, monitor)
                 msg = "Added you to smashfest #%s {0.author.mention}".format(message) % fest
-            except IndexError or TypeError:
-                msg = "Format your message like this: !addme/1(Smashfest number)/yes(setup)/no(monitor)"
+            #except IndexError or TypeError:
+                #msg = "Format your message like this: !addme/1(Smashfest number)/yes(setup)/no(monitor)"
         else:
             msg = "There are no current smashfests, try creating one with !create"
         await client.send_message(message.channel, msg)
