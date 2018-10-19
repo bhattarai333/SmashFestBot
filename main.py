@@ -86,11 +86,11 @@ async def on_message(message):
     if message.content.startswith("!create"):
         try:
             messageString = str(message.content)
-            #parts = messageString.split("/")
+            parts = messageString.split("/")
             #sf = SmashFest(message.author, parts[1], parts[2])
             #smashfests.append(sf)
             #msg = "Created smashfest, currently #%s smashfest(s) planned" % len(smashfests)
-            msg = messageString
+            msg = "Success"
         except IndexError:
             msg = "Format your message like this: !create/Snyphi Basement/7:31 PM"
         await client.send_message(message.channel, msg)
