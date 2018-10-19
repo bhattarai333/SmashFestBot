@@ -31,6 +31,21 @@ class SmashFest:
         output = "Smashfest #%s Owner: %s Location: %s Time: %s Setups: %s\n" % (index, self.owner, self.location, self.startTime, self.currentSetups)
         return output
 
+    def addParticipants(self, person):
+        self.participants.append(person)
+
+    def listParticipants(self):
+        output = ""
+        for participant in self.participants:
+            output = output + participant + ", "
+        output = output[:-2]
+        return output
+
+    def addSetup(self):
+        self.numSetups += 1
+
+    def getSetups(self):
+        return self.numSetups
 
 
 
@@ -48,6 +63,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    originalMessage = message.content
     message.content = message.content.lower()
     if message.author == "Smashfest Bot#9788":
         return
@@ -87,7 +103,7 @@ async def on_message(message):
 
     if message.content.startswith("!create"):
         try:
-            messageString = str(message.content)
+            messageString = str(originalMessage)
             parts = messageString.split("/")
             print(parts)
             sf = SmashFest(str(message.author), parts[1], parts[2])
@@ -99,19 +115,66 @@ async def on_message(message):
 
     if message.content.startswith("!list"):
         msg = ""
-        for index, smashfest in enumerate(smashfests):
-            msg = msg + smashfest.tostr(index)
+        if not len(smashfests) == 0:
+            for index, smashfest in enumerate(smashfests):
+                msg = msg + smashfest.tostr(index)
+        else:
+            msg = "There are no current smashfests, try creating one with !create"
+        await client.send_message(message.channel, msg)
+
+    if message.content.startswith("!addme"):
+        if not len(smashfests) == 0:
+            try:
+                messageString = str(originalMessage)
+                parts = messageString.split("/")
+                fest = int(parts[1])
+                smashfests[fest].addParticipant(message.author)
+                msg = "Added you to smashfest #%s {0.author.mention}".format(fest, message) % fest
+            except IndexError or TypeError:
+                msg = "Format your message like this: !addme/1"
+        else:
+            msg = "There are no current smashfests, try creating one with !create"
+        await client.send_message(message.channel, msg)
+
+    if message.content.startswith("!participants"):
+        if not len(smashfests) == 0:
+            try:
+                messageString = str(originalMessage)
+                parts = messageString.split("/")
+                fest = int(parts[1])
+                msg = smashfests[fest].listParticipants()
+            except IndexError or TypeError:
+                msg = "Format your message like this: !participants/1"
+        else:
+            msg = "There are no current smashfests, try creating one with !create"
+        await client.send_message(message.channel, msg)
+
+    if message.content.startswith("!setups"):
+        if not len(smashfests) == 0:
+            try:
+                messageString = str(originalMessage)
+                parts = messageString.split("/")
+                fest = int(parts[1])
+                setups = smashfests[fest].getSetups()
+                msg = "Smashfest #%s has %s setup(s)" % (fest, setups)
+            except IndexError or TypeError:
+                msg = "Format your message like this: !setups/1"
+        else:
+            msg = "There are no current smashfests, try creating one with !create"
         await client.send_message(message.channel, msg)
 
     if message.content.startswith("!end"):
-        try:
-            messageString = str(message.content)
-            parts = messageString.split("/")
-            index = int(parts[1])
-            smashfests.pop(index)
-            msg = "Removed smashfest #%s" % index
-        except IndexError or TypeError:
-            msg = "Format your message like this: !end/5"
+        if not len(smashfests) == 0:
+            try:
+                messageString = str(originalMessage)
+                parts = messageString.split("/")
+                index = int(parts[1])
+                smashfests.pop(index)
+                msg = "Removed smashfest #%s" % index
+            except IndexError or TypeError:
+                msg = "Format your message like this: !end/1"
+        else:
+            msg = "There are no current smashfests, try creating one with !create"
         await client.send_message(message.channel, msg)
 
 
