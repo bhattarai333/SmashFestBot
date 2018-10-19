@@ -34,8 +34,8 @@ class SmashFest:
         return output
 
     def addParticipant(self, person, setup, monitor):
-        setup = setup.trim()
-        monitor = monitor.trim()
+        setup = setup.strip()
+        monitor = monitor.strip()
         if setup == "yes":
             setup = 1
         else:
