@@ -36,11 +36,11 @@ class SmashFest:
     def addParticipant(self, person, setup, monitor):
         setup = setup.strip()
         monitor = monitor.strip()
-        if setup == "yes":
+        if setup == "yes" or int(setup) > 0:
             setup = 1
         else:
             setup = 0
-        if monitor == "yes":
+        if monitor == "yes" or int(monitor) > 0:
             monitor = 1
         else:
             setup = 0
@@ -72,6 +72,7 @@ class SmashFest:
         setups = 0
         monitors = 0
         for participant in self.participants:
+            print(participant)
             if participant[0] == 1:
                 setups += 1
             if participant[1] == 1:
@@ -152,13 +153,14 @@ async def on_message(message):
             #try:
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
+                print(parts)
                 fest = int(parts[1])
                 setup = parts[2]
                 monitor = parts[3]
                 smashfests[fest].addParticipant(str(message.author), setup, monitor)
                 msg = "Added you to smashfest #%s {0.author.mention}".format(message) % fest
             #except IndexError or TypeError:
-                #msg = "Format your message like this: !addme/1(Smashfest number)/yes(setup)/no(monitor)"
+                #msg = "Format your message like this: !addme/1(Smashfest number)/yes(setup)/no(monitor) If you used correct formatting check the smashfest number with !list"
         else:
             msg = "There are no current smashfests, try creating one with !create"
         await client.send_message(message.channel, msg)
