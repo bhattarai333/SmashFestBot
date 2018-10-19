@@ -86,12 +86,13 @@ async def on_message(message):
         try:
             messageString = str(message.content)
             parts = messageString.split("/")
-            sf = SmashFest(str(message).author, parts[1], parts[2])
+            print(parts)
+            sf = SmashFest(str(message.author), parts[1], parts[2])
             #smashfests.append(sf)
             #msg = "Created smashfest, currently #%s smashfest(s) planned" % len(smashfests)
-            msg = "Success2"
+            msg = "Success3"
         except IndexError:
-            msg = "Format your message like this: !create/Snyphi Basement/7:32 PM"
+            msg = "Format your message like this: !create/Snyphi Basement/7:33 PM"
         await client.send_message(message.channel, msg)
 
 
