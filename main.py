@@ -73,13 +73,10 @@ class SmashFest:
         monitors = 0
         for participant in self.participants:
             info = self.participants[participant]
-            print("S: %s M: %s" % (info[0], info[1]))
             if info[0] == 1 or info[0] == '1':
                 setups += 1
-                print("ADD SETUP")
             if info[1] == 1 or info[1] == '1':
                 monitors += 1
-                print("ADD MONITOR")
             self.monitors = monitors
             self.numSetups = setups
 
@@ -129,6 +126,18 @@ async def on_message(message):
         msg = "Money match me {0.author.mention}, you won't".format(message)
         await client.send_message(message.channel, msg)
 
+    if message.content.startswith("!help"):
+        msg = ""
+        msg = msg + "!create/LOCATION/START TIME/NUMBER OF SETUPS IN ROOM/NUMBER OF MONITORS IN ROOM    Creates a smashfest that others can join"
+        msg = msg + "!list/SMASHFEST NUMBER                                                             Lets you view information about a smashfest including smashfest number, where and when it is and how many people/setups there are"
+        msg = msg + "!addme/SMASHFEST NUMBER/BRINGING A SETUP/BRINGING A MONITOR                        Lets you join a smashfest and specify if you're bringing a monitor or a setup or both"
+        msg = msg + "!participants/SMASHFEST NUMBER                                                     Displays the participants of a smashfest"
+        msg = msg + "!setups/SMASHFEST NUMBER                                                           Displays how many setups and participants are at a fest"
+        msg = msg + "!monitors/SMASHFEST NUMBER                                                         Displays how many monitors and participants there are at a fest"
+        msg = msg + "!end/SMASHFEST NUMBER                                                              Ends a smashfest, can only be called by the owner of a fest"
+
+
+        await client.send_message(message.channel, msg)
     if message.content.startswith("!create"):
         try:
             messageString = str(originalMessage)
@@ -139,7 +148,7 @@ async def on_message(message):
             smashfests.append(sf)
             msg = "Created smashfest, currently %s smashfest(s) planned" % len(smashfests)
         except IndexError:
-            msg = "Format your message like this(don't include parentheses): !create/Snyphi Basement(location)/7:34 PM(Start Time)/1(setup)/2(monitors)"
+            msg = "Format your message like this(don't include parentheses): !create/Snyphi Basement(Location)/7:34 PM(Start Time)/1(Setup)/2(monitors)"
         await client.send_message(message.channel, msg)
 
     if message.content.startswith("!list"):
@@ -153,17 +162,16 @@ async def on_message(message):
 
     if message.content.startswith("!addme"):
         if not len(smashfests) == 0:
-            #try:
+            try:
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
-                print(parts)
                 fest = int(parts[1])
                 setup = parts[2]
                 monitor = parts[3]
                 smashfests[fest].addParticipant(str(message.author), setup, monitor)
                 msg = "Added you to smashfest #%s {0.author.mention}".format(message) % fest
-            #except IndexError or TypeError:
-                #msg = "Format your message like this: !addme/1(Smashfest number)/yes(setup)/no(monitor) If you used correct formatting check the smashfest number with !list"
+            except IndexError or TypeError:
+                msg = "Format your message like this: !addme/1(Smashfest number)/yes(Setup)/no(Monitor) If you used correct formatting check the smashfest number with !list"
         else:
             msg = "There are no current smashfests, try creating one with !create"
         await client.send_message(message.channel, msg)
