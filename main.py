@@ -97,8 +97,9 @@ async def on_message(message):
     if message.content.startswith("!create"):
         try:
             messageString = str(originalMessage)
-            print(messageString)
+            print("MESSAGE: %s" % messageString)
             parts = messageString.split("/")
+            print(parts)
             sf = SmashFest(sender, parts[1], parts[2])
             smashfests.append(sf)
             msg = "Created smashfest, currently #%s smashfest(s) planned" % len(smashfests)
