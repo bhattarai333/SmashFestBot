@@ -72,7 +72,7 @@ class SmashFest:
         setups = 0
         monitors = 0
         for participant in self.participants:
-            print(participant)
+            print(self.participants[participant])
             if participant[0] == 1:
                 setups += 1
             if participant[1] == 1:
