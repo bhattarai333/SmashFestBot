@@ -56,7 +56,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
 
     if message.content.startswith("!mario"):
-        msg = "J3's Mario is sick"
+        msg = "J3's Mario is sick af"
         await client.send_message(message.channel, msg)
 
     if message.content.startswith("!69"):
@@ -83,13 +83,9 @@ async def on_message(message):
         msg = "Money match me {0.author.mention}, you won't".format(message)
         await client.send_message(message.channel, msg)
 
-    if message.content.startswith('!create'):
-        try:
-            msg = "creating"
-        except:
-            msg = "Format your message like this: !create!Snyphi Basement!7:30 PM"
-        await client.send_message(message.channel, msg)
 
+
+Bot = commands.Bot(command_prefix="!create")
 @client.command()
 async def test(ctx, *args):
     await ctx.send('{} arguments: {}'.format(len(args), ', '.join(args)))
