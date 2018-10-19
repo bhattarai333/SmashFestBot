@@ -27,6 +27,9 @@ class SmashFest:
     def addParticipants(self, participant):
         self.participants.append(participant)
 
+    def tostr(self, index):
+        output = "Smashfest #%s Owner: %s Location: %s Time: %s Setups: %s\n" % (index, self.owner, self.location, self.startTime, self.currentSetups)
+        return output
 
 
 
@@ -90,10 +93,27 @@ async def on_message(message):
             sf = SmashFest(str(message.author), parts[1], parts[2])
             smashfests.append(sf)
             msg = "Created smashfest, currently #%s smashfest(s) planned" % len(smashfests)
-            msg = "Success4"
         except IndexError:
             msg = "Format your message like this: !create/Snyphi Basement/7:34 PM"
         await client.send_message(message.channel, msg)
+
+    if message.content.startswith("!list"):
+        msg = ""
+        for index, smashfest in enumerate(smashfests):
+            msg = msg + smashfest.tostr(index)
+        await client.send_message(message.channel, msg)
+
+    if message.content.startswith("!end"):
+        try:
+            messageString = str(message.content)
+            parts = messageString.split("/")
+            index = int(parts[1])
+            smashfests.pop(index)
+            msg = "Removed smashfest #%s" % index
+        except IndexError or TypeError:
+            msg = "Format your message like this: !end/5"
+        await client.send_message(message.channel, msg)
+
 
 
 
