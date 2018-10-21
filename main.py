@@ -137,7 +137,7 @@ async def on_message(message):
             msg = "I love Rein"
 
         await client.send_message(message.channel, msg)
-    if message.content.startwith("!cherpumple"):
+    if message.content.startswith("!cherpumple"):
         rand = random.randint(0, 3)
         msg = "Did you mean "
         if rand == 0:
