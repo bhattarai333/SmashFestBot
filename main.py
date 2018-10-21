@@ -95,16 +95,7 @@ class SmashFest:
 smashfests = list()
 Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
-emojis = list(client.get_all_emojis())
-print(emojis)
-
-bdubs_emoji = "Yay BDubs"
-for emoji in emojis:
-    print(emoji)
-    parts = emoji.split(':')
-    print("Emoji: %s Part: %s" % (emoji, parts))
-    if parts[1] == "bdubs":
-        bdubs_emoji = emoji
+bdubs_emoji = ":bdubs:"
 
 
 
