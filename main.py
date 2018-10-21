@@ -1,6 +1,7 @@
 import discord
 from discord.ext.commands import Bot
 from discord.ext import commands
+import random
 import asyncio
 import time
 import os
@@ -13,7 +14,7 @@ import os
 
 class SmashFest:
     owner = "MSU | BlueFlare10"
-    participants ={}
+    participants = {}
     location = "Communication Arts Building, Room 154"
     startTime = "6:00 PM"
     initialMonitors = 0
@@ -125,6 +126,17 @@ async def on_message(message):
     if message.content.startswith("!carter"):
         msg = "Money match me {0.author.mention}, you won't".format(message)
         await client.send_message(message.channel, msg)
+    if message.content.startswith("!cherpumple"):
+        rand = random.randint(0, 2)
+        msg = ""
+        if rand == 0:
+            msg = "I love Robin"
+        elif rand == 1:
+            msg = "I love Chrom"
+        elif rand == 2:
+            msg = "I love Rein"
+
+        await client.send_message(message.channel, msg)
 
     if message.content.startswith("!help"):
         await client.send_message(message.channel, "!create/LOCATION/START TIME/NUMBER OF SETUPS IN ROOM/NUMBER OF MONITORS IN ROOM    Creates a smashfest that others can join")
@@ -166,6 +178,9 @@ async def on_message(message):
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
                 fest = int(parts[1]) - 1
+                if fest < 0:
+                    await client.send_message(message.channel, "Please enter a positive numbered smashfest")
+                    return
                 setup = parts[2]
                 monitor = parts[3]
                 smashfests[fest].addParticipant(str(message.author), setup, monitor)
@@ -182,6 +197,9 @@ async def on_message(message):
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
                 fest = int(parts[1])
+                if fest < 0:
+                    await client.send_message(message.channel, "Please enter a positive numbered smashfest")
+                    return
                 smashfests[fest].addParticipant(str(message.author))
                 msg = "Removed you from smashfest #%s {0.author.mention}".format(message) % fest
             except IndexError or TypeError:
@@ -196,6 +214,9 @@ async def on_message(message):
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
                 fest = int(parts[1]) - 1
+                if fest < 0:
+                    await client.send_message(message.channel, "Please enter a positive numbered smashfest")
+                    return
                 msg = smashfests[fest].listParticipants()
             except IndexError or TypeError:
                 msg = "Format your message like this: !participants/1(Smashfest number)"
@@ -209,6 +230,9 @@ async def on_message(message):
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
                 fest = int(parts[1]) - 1
+                if fest < 0:
+                    await client.send_message(message.channel, "Please enter a positive numbered smashfest")
+                    return
                 setups = smashfests[fest].getSetups()
                 participants = len(smashfests[fest].participants)
                 monitors = smashfests[fest].getMonitors()
@@ -226,6 +250,9 @@ async def on_message(message):
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
                 index = int(parts[1]) - 1
+                if index < 0:
+                    await client.send_message(message.channel, "Please enter a positive numbered smashfest")
+                    return
 
                 sender = str(message.author)
                 owner = smashfests[index].owner
