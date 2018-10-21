@@ -92,18 +92,22 @@ class SmashFest:
 
 
 
+smashfests = list()
 Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
-server = None
 
-smashfests = list()
+emojis = client.get_all_emojis()
+bdubs_emoji = "Yay BDubs"
+for emoji in emojis:
+    parts = emoji.split(':')
+    if parts[1] == "bdubs":
+        bdubs_emoji = emoji
+
+
 
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name="Smash Ultimate"))
-    emojis = client.get_all_emojis()
-    for emoji in emojis:
-        print(emoji)
 
 @client.event
 async def on_message(message):
@@ -131,7 +135,7 @@ async def on_message(message):
         msg = "BDubs is better"
         await client.send_message(message.channel, msg)
     if message.content.startswith("bdubs"):
-        msg = ":bdubs:"
+        msg = bdubs_emoji
         await client.send_message(message.channel, msg)
     if message.content.startswith("!carter"):
         msg = "Money match me {0.author.mention}, you won't".format(message)
@@ -306,8 +310,6 @@ async def on_message(message):
         else:
             msg = "There are no current smashfests, try creating one with !create"
         await client.send_message(message.channel, msg)
-
-
 
 
 client.run('NTAyNTg5MzM2NzA2MDg4OTYy.Dqqr3w.vQdTF0dW6yiT8e8X_e8ZqcCEF1w')
