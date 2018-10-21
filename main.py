@@ -127,7 +127,7 @@ async def on_message(message):
         msg = "Money match me {0.author.mention}, you won't".format(message)
         await client.send_message(message.channel, msg)
     if message.content.startswith("!taylor"):
-        rand = random.randint(0, 2)
+        rand = random.randint(0, 4)
         msg = ""
         if rand == 0:
             msg = "I love Robin"
@@ -135,6 +135,10 @@ async def on_message(message):
             msg = "I love Chrom"
         elif rand == 2:
             msg = "I love Rein"
+        elif rand == 3:
+            msg = "I love McCree"
+        elif rand == 4:
+            msg = "I love All Might"
 
         await client.send_message(message.channel, msg)
     if message.content.startswith("!cherpumple"):
