@@ -97,7 +97,6 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
 emojis = client.get_all_emojis()
 print(emojis)
-print(len(emojis))
 
 bdubs_emoji = "Yay BDubs"
 for emoji in emojis:
