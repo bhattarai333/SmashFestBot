@@ -23,9 +23,16 @@ class SmashFest:
     numSetups = 0
 
     def __init__(self, owner, location, startTime):
-        self.owner = owner  # str.split(owner, '#')[0]
+        self.owner = owner
         self.location = location
         self.startTime = startTime
+
+    def __del__(self):
+        self.participants.clear()
+        self. initialMonitors = 0
+        self.initialSetups = 0
+        self.monitors = 0
+        self.numSetups = 0
 
     def addParticipants(self, participant, setup, monitor):
         self.addParticipant(participant, setup, monitor)
@@ -142,7 +149,7 @@ async def on_message(message):
 
         await client.send_message(message.channel, msg)
     if message.content.startswith("!cherpumple"):
-        rand = random.randint(0, 3)
+        rand = random.randint(0, 5)
         msg = "Did you mean "
         if rand == 0:
             msg = msg + "Cherpumpled?"
@@ -152,8 +159,20 @@ async def on_message(message):
             msg = msg + "Cherpumsle?"
         elif rand == 3:
             msg = msg + "Chairpumple?"
+        elif rand == 4:
+            msg = msg + "Cherfluffle?"
+        elif rand == 5:
+            msg = msg + "Cherple?"
         await client.send_message(message.channel, msg)
-
+    if message.content.startswith("!goma"):
+        msg = "Another Dr. Pepper please"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!dyl"):
+        msg = "DILL PICKLE"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!j3"):
+        msg = "Did you mean sick Mario?"
+        await client.send_message(message.channel, msg)
 
     if message.content.startswith("!help"):
         await client.send_message(message.channel, "!create/LOCATION/START TIME/NUMBER OF SETUPS IN ROOM/NUMBER OF MONITORS IN ROOM    Creates a smashfest that others can join")
