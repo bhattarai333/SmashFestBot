@@ -30,7 +30,7 @@ class SmashFest:
         self.addParticipant(participant, setup, monitor)
 
     def tostr(self, index):
-        output = "Smashfest #%s Owner: %s Location: %s Time: %s Setups: %s Monitors: %s\n" % (index, self.owner, self.location, self.startTime, self.getSetups(), self.getMonitors())
+        output = "Smashfest #%s Owner: %s Location: %s Time: %s Setups: %s Monitors: %s\n" % (index + 1, self.owner, self.location, self.startTime, self.getSetups(), self.getMonitors())
         return output
 
     def addParticipant(self, person, setup, monitor):
@@ -165,7 +165,7 @@ async def on_message(message):
             try:
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
-                fest = int(parts[1])
+                fest = int(parts[1]) - 1
                 setup = parts[2]
                 monitor = parts[3]
                 smashfests[fest].addParticipant(str(message.author), setup, monitor)
