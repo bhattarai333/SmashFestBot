@@ -169,7 +169,7 @@ async def on_message(message):
                 setup = parts[2]
                 monitor = parts[3]
                 smashfests[fest].addParticipant(str(message.author), setup, monitor)
-                msg = "Added you to smashfest #%s {0.author.mention}".format(message) % fest
+                msg = "Added you to smashfest #%s {0.author.mention}".format(message) % (fest + 1)
             except IndexError or TypeError:
                 msg = "Format your message like this: !addme/1(Smashfest number)/yes(Setup)/no(Monitor) If you used correct formatting check the smashfest number with !list"
         else:
