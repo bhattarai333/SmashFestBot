@@ -95,7 +95,7 @@ class SmashFest:
 smashfests = list()
 Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
-emojis = client.get_all_emojis()
+emojis = list(client.get_all_emojis())
 print(emojis)
 
 bdubs_emoji = "Yay BDubs"
