@@ -100,6 +100,7 @@ emojis = client.get_all_emojis()
 bdubs_emoji = "Yay BDubs"
 for emoji in emojis:
     parts = emoji.split(':')
+    print("Emoji: %s Part: %s" % (emoji, parts))
     if parts[1] == "bdubs":
         bdubs_emoji = emoji
 
