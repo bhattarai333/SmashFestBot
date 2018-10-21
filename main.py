@@ -102,7 +102,8 @@ smashfests = list()
 async def on_ready():
     await client.change_presence(game=discord.Game(name="Smash Ultimate"))
     emojis = client.get_all_emojis()
-    print(emojis)
+    for emoji in emojis:
+        print(emoji)
 
 @client.event
 async def on_message(message):
