@@ -23,7 +23,7 @@ class SmashFest:
     numSetups = 0
 
     def __init__(self, owner, location, startTime):
-        self.owner = owner#str.split(owner, '#')[0]
+        self.owner = owner  # str.split(owner, '#')[0]
         self.location = location
         self.startTime = startTime
 
@@ -126,7 +126,7 @@ async def on_message(message):
     if message.content.startswith("!carter"):
         msg = "Money match me {0.author.mention}, you won't".format(message)
         await client.send_message(message.channel, msg)
-    if message.content.startswith("!cherpumple"):
+    if message.content.startswith("!taylor"):
         rand = random.randint(0, 2)
         msg = ""
         if rand == 0:
@@ -137,6 +137,19 @@ async def on_message(message):
             msg = "I love Rein"
 
         await client.send_message(message.channel, msg)
+    if message.content.startwith("!cherpumple"):
+        rand = random.randint(0, 3)
+        msg = "Did you mean "
+        if rand == 0:
+            msg = msg + "Cherpumpled?"
+        elif rand == 1:
+            msg = msg + "Cherpipele?"
+        elif rand == 2:
+            msg = msg + "Cherpumsle?"
+        elif rand == 3:
+            msg = msg + "Chairpumple?"
+        await client.send_message(message.channel, msg)
+
 
     if message.content.startswith("!help"):
         await client.send_message(message.channel, "!create/LOCATION/START TIME/NUMBER OF SETUPS IN ROOM/NUMBER OF MONITORS IN ROOM    Creates a smashfest that others can join")
