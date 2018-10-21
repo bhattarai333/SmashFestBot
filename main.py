@@ -195,7 +195,7 @@ async def on_message(message):
             try:
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
-                fest = int(parts[1])
+                fest = int(parts[1]) - 1
                 msg = smashfests[fest].listParticipants()
             except IndexError or TypeError:
                 msg = "Format your message like this: !participants/1(Smashfest number)"
@@ -208,11 +208,11 @@ async def on_message(message):
             try:
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
-                fest = int(parts[1])
+                fest = int(parts[1]) - 1
                 setups = smashfests[fest].getSetups()
                 participants = len(smashfests[fest].participants)
                 monitors = smashfests[fest].getMonitors()
-                msg = "Smashfest #%s has %s participant(s), %s monitor(s) and %s setup(s)" % (fest, participants, monitors, setups)
+                msg = "Smashfest #%s has %s participant(s), %s monitor(s) and %s setup(s)" % (fest + 1, participants, monitors, setups)
             except IndexError or TypeError:
                 msg = "Format your message like this: !setups/1(Smashfest number)"
         else:
@@ -225,7 +225,7 @@ async def on_message(message):
             try:
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
-                index = int(parts[1])
+                index = int(parts[1]) - 1
 
                 sender = str(message.author)
                 owner = smashfests[index].owner
@@ -234,7 +234,7 @@ async def on_message(message):
                     msg = "You're not the owner of this fest!"
                 else:
                     smashfests.pop(index)
-                    msg = "Removed smashfest #%s" % index
+                    msg = "Removed smashfest #%s" % (index + 1)
             except IndexError or TypeError:
                 msg = "Format your message like this: !end/1"
         else:
