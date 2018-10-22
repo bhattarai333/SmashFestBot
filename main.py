@@ -54,8 +54,8 @@ class SmashFest:
         self.participants[person] = info
 
     def removeParticipant(self, person):
-        self.findInfo()
         self.participants.pop(person, None)
+        self.findInfo()
 
     def listParticipants(self):
         output = ""
@@ -192,7 +192,7 @@ async def on_message(message):
     if message.content.startswith("!about"):
         msg = "Hello, I am a bot to help MSU students find places to play Smash 4/Smash Ultimate on campus. Direct any complaints to J3.\n"
         msg = msg + "Written in Python 3.7, running in a free hosted Heroku Python 3.6.6 enviornment. Uses Discord.py by Rapptz\n"
-        msg = msg + "Follow the MSU Smash 4 Twitter: https://twitter.com/msusmash4"
+        msg = msg + "Please follow the MSU Smash 4 Twitter: https://twitter.com/msusmash4"
         await client.send_message(message.channel, msg)
 
 
