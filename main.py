@@ -241,12 +241,12 @@ async def on_message(message):
             #try:
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
-                fest = int(parts[1])
+                fest = int(parts[1]) - 1
                 if fest < 0:
                     await client.send_message(message.channel, "Please enter a positive numbered smashfest")
                     return
                 smashfests[fest].removeParticipant(str(message.author))
-                msg = "Removed you from smashfest #%s {0.author.mention}".format(message) % fest
+                msg = "Removed you from smashfest #%s {0.author.mention}".format(message) % fest + 1
             #except IndexError or TypeError:
                 #msg = "Format your message like this: !removeme/1(Smashfest number)"
         else:
