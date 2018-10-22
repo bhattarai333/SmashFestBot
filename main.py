@@ -27,6 +27,10 @@ class SmashFest:
         self.participants = {}
         self.location = location
         self.startTime = startTime
+        self.initialSetups = 0
+        self.initialMonitors = 0
+        self.monitors = 0
+        self.numSetups = 0
 
     def __del__(self):
         self.participants.clear()
@@ -190,7 +194,7 @@ async def on_message(message):
         await client.send_message(message.channel, "!monitors/SMASHFEST NUMBER                                                         Displays how many monitors are at a fest")
         await client.send_message(message.channel, "!end/SMASHFEST NUMBER                                                              Ends a smashfest")
     if message.content.startswith("!about"):
-        msg = "Hello, I am a bot to help MSU students find places to play Smash 4/Smash Ultimate on campus. Direct any complaints to J3(Josh Bhattarai).\n"
+        msg = "Hello, I am a bot to help MSU students find places to play Smash 4/Smash Ultimate on campus. Direct any inquiries to J3(Josh Bhattarai).\n"
         msg = msg + "Written in Python 3.7, running in a free hosted Heroku Python 3.6.6 enviornment. Uses Discord.py by Rapptz\n"
         msg = msg + "Please follow the MSU Smash 4 Twitter: https://twitter.com/msusmash4"
         await client.send_message(message.channel, msg)
