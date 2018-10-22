@@ -14,7 +14,7 @@ import os
 
 class SmashFest:
     owner = "MSU | BlueFlare10"
-    participants = dict()
+    participants = {}
     location = "Communication Arts Building, Room 154"
     startTime = "6:00 PM"
     initialMonitors = 0
@@ -97,7 +97,7 @@ class SmashFest:
 
 
 
-smashfests = list()
+smashfests = []
 Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
 
@@ -226,6 +226,7 @@ async def on_message(message):
                     return
                 setup = parts[2]
                 monitor = parts[3]
+                print(fest)
                 smashfests[fest].addParticipant(str(message.author), setup, monitor)
                 msg = "Added you to smashfest #%s {0.author.mention}".format(message) % (fest + 1)
                 for smashfest in smashfests:
