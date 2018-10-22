@@ -95,7 +95,8 @@ class SmashFest:
 smashfests = list()
 Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
-bdubs_emoji = ":bdubs:"
+
+bdubs_emoji = "Yay BDubs"
 
 
 
@@ -222,6 +223,8 @@ async def on_message(message):
                 monitor = parts[3]
                 smashfests[fest].addParticipant(str(message.author), setup, monitor)
                 msg = "Added you to smashfest #%s {0.author.mention}".format(message) % (fest + 1)
+                for smashfest in smashfests:
+                    print (smashfest.participants)
             except IndexError or TypeError:
                 msg = "Format your message like this: !addme/1(Smashfest number)/yes(Setup)/no(Monitor) If you used correct formatting check the smashfest number with !list"
         else:
