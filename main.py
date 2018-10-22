@@ -60,6 +60,8 @@ class SmashFest:
         for participant in self.participants:
             output = output + participant + ", "
         output = output[:-2]
+        if output == "":
+            output = "No participants :("
         return output
 
     def addSetup(self):
@@ -224,7 +226,7 @@ async def on_message(message):
                 smashfests[fest].addParticipant(str(message.author), setup, monitor)
                 msg = "Added you to smashfest #%s {0.author.mention}".format(message) % (fest + 1)
                 for smashfest in smashfests:
-                    print (smashfest.participants)
+                    print(smashfest.participants)
             except IndexError or TypeError:
                 msg = "Format your message like this: !addme/1(Smashfest number)/yes(Setup)/no(Monitor) If you used correct formatting check the smashfest number with !list"
         else:
