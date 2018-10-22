@@ -54,6 +54,7 @@ class SmashFest:
         self.participants[person] = info
 
     def removeParticipant(self, person):
+        print(person)
         self.participants.pop(person, None)
 
     def listParticipants(self):
