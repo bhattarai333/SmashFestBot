@@ -54,7 +54,7 @@ class SmashFest:
         self.participants[person] = info
 
     def removeParticipant(self, person):
-        print(person)
+        self.findInfo()
         self.participants.pop(person, None)
 
     def listParticipants(self):
@@ -238,7 +238,7 @@ async def on_message(message):
 
     if message.content.startswith("!removeme"):
         if not len(smashfests) == 0:
-            #try:
+            try:
                 messageString = str(originalMessage)
                 parts = messageString.split("/")
                 fest = int(parts[1]) - 1
@@ -247,8 +247,8 @@ async def on_message(message):
                     return
                 smashfests[fest].removeParticipant(str(message.author))
                 msg = "Removed you from smashfest #%s {0.author.mention}".format(message) % (fest + 1)
-            #except IndexError or TypeError:
-                #msg = "Format your message like this: !removeme/1(Smashfest number)"
+            except IndexError or TypeError:
+                msg = "Format your message like this: !removeme/1(Smashfest number)"
         else:
             msg = "There are no current smashfests, try creating one with !create"
         await client.send_message(message.channel, msg)
