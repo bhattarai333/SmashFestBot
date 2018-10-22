@@ -14,7 +14,7 @@ import os
 
 class SmashFest:
     owner = "MSU | BlueFlare10"
-    participants = {}
+    participants = dict()
     location = "Communication Arts Building, Room 154"
     startTime = "6:00 PM"
     initialMonitors = 0
@@ -54,6 +54,9 @@ class SmashFest:
             monitor = 0
         info = (setup, monitor)
         self.participants[person] = info
+
+    def removeParticipant(self, person):
+        self.participants.pop(person, None)
 
     def listParticipants(self):
         output = ""
@@ -242,7 +245,7 @@ async def on_message(message):
                 if fest < 0:
                     await client.send_message(message.channel, "Please enter a positive numbered smashfest")
                     return
-                smashfests[fest].addParticipant(str(message.author))
+                smashfests[fest].removeParticipant(str(message.author))
                 msg = "Removed you from smashfest #%s {0.author.mention}".format(message) % fest
             except IndexError or TypeError:
                 msg = "Format your message like this: !removeme/1(Smashfest number)"
