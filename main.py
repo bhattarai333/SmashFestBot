@@ -24,6 +24,7 @@ class SmashFest:
 
     def __init__(self, owner, location, startTime):
         self.owner = owner
+        self.participants = {}
         self.location = location
         self.startTime = startTime
 
@@ -33,9 +34,6 @@ class SmashFest:
         self.initialSetups = 0
         self.monitors = 0
         self.numSetups = 0
-
-    def addParticipants(self, participant, setup, monitor):
-        self.addParticipant(participant, setup, monitor)
 
     def tostr(self, index):
         output = "Smashfest #%s Owner: %s Location: %s Time: %s Setups: %s Monitors: %s\n" % (index + 1, self.owner, self.location, self.startTime, self.getSetups(), self.getMonitors())
