@@ -40,7 +40,6 @@ class SmashFest:
         self.numSetups = 0
 
     def tostr(self, index):
-        self.findInfo()
         output = "Smashfest #%s Owner: %s Location: %s Time: %s Setups: %s Monitors: %s\n" % (index + 1, self.owner, self.location, self.startTime, self.getSetups(), self.getMonitors())
         return output
 
