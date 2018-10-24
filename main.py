@@ -191,7 +191,7 @@ async def on_message(message):
     if message.content.startswith("!nebula"):
         msg = "Go to sleep"
         await client.send_message(message.channel, msg)
-    if message.content.startwith("!shiva"):
+    if message.content.startswith("!shiva"):
         msg = "THE LEGEND!"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!cri"):
