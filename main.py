@@ -182,6 +182,22 @@ async def on_message(message):
     if message.content.startswith("!j3"):
         msg = "Did you mean sick Mario?"
         await client.send_message(message.channel, msg)
+    if message.content.startswith("!mm") or message.content.startswith("!moneymatch"):
+        msg = "me Carter";
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!slam") or message.content.startwith("!danny"):
+        msg = "Don't get greedy!"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!nebula"):
+        msg = "Go to sleep"
+        await client.send_message(message.channel, msg)
+    if message.content.startwith("!shiva"):
+        msg = "THE LEGEND!"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!cri"):
+        msg = "yank"
+        await client.send_message(message.channel, msg)
+
 
     if message.content.startswith("!help"):
         await client.send_message(message.channel, "!create/LOCATION/START TIME/NUMBER OF SETUPS IN ROOM/NUMBER OF MONITORS IN ROOM    Creates a smashfest that others can join")
