@@ -185,7 +185,7 @@ async def on_message(message):
     if message.content.startswith("!mm") or message.content.startswith("!moneymatch"):
         msg = "me Carter";
         await client.send_message(message.channel, msg)
-    if message.content.startswith("!slam") or message.content.startwith("!danny"):
+    if message.content.startswith("!slam") or message.content.startswith("!danny"):
         msg = "Don't get greedy!"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!nebula"):
