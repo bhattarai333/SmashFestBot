@@ -90,10 +90,8 @@ class SmashFest:
             info = self.participants[participant]
             if info[0] == 1 or info[0] == '1':
                 setups += 1
-                print("ADDED SETUP")
             if info[1] == 1 or info[1] == '1':
                 monitors += 1
-                print("ADDED MONITOR")
         self.monitors = monitors
         self.numSetups = setups
 
@@ -195,8 +193,8 @@ async def on_message(message):
         await client.send_message(message.channel, "!monitors/SMASHFEST NUMBER                                                         Displays how many monitors are at a fest")
         await client.send_message(message.channel, "!end/SMASHFEST NUMBER                                                              Ends a smashfest")
     if message.content.startswith("!about"):
-        msg = "Hello, I am a bot to help MSU students find places to play Smash 4/Smash Ultimate on campus. Direct any inquiries to J3(Josh Bhattarai).\n"
-        msg = msg + "Written in Python 3.7, running in a free hosted Heroku Python 3.6.6 enviornment. Uses Discord.py by Rapptz\n"
+        msg = "Hello, I am SmashFest Bot v1.0.0 to help MSU students find places to play Smash 4/Smash Ultimate on campus. Direct any inquiries to J3(Josh Bhattarai).\n"
+        msg = msg + "Written in Python 3.7, running in a free hosted Heroku Python 3.6.6 enviornment. Uses Discord.py by Rapptz.\n"
         msg = msg + "Please follow the MSU Smash 4 Twitter: https://twitter.com/msusmash4"
         await client.send_message(message.channel, msg)
 
@@ -235,11 +233,8 @@ async def on_message(message):
                     return
                 setup = parts[2]
                 monitor = parts[3]
-                print(fest)
                 smashfests[fest].addParticipant(str(message.author), setup, monitor)
                 msg = "Added you to smashfest #%s {0.author.mention}".format(message) % (fest + 1)
-                for smashfest in smashfests:
-                    print(smashfest.participants)
             except IndexError or TypeError:
                 msg = "Format your message like this: !addme/1(Smashfest number)/yes(Setup)/no(Monitor) If you used correct formatting check the smashfest number with !list"
         else:
