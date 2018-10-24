@@ -197,8 +197,39 @@ async def on_message(message):
     if message.content.startswith("!cri"):
         msg = "yank"
         await client.send_message(message.channel, msg)
+    if message.content.startswith("!sam"):
+        msg = "Please... Please prereg"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!flare"):
+        rand = random.randint(0, 7)
+        if rand == 0:
+            msg = "Did you see my sick Fortnite win?"
+        elif rand == 1:
+            msg = "I had to do it to em haha amirite guise?"
+        elif rand == 2:
+            msg = "Something something dragons something"
+        elif rand == 3:
+            msg = "I'm secretly in love with Bowser and his thicc necc"
+        elif rand == 4:
+            msg = "Yikes"
+        elif rand == 5:
+            msg = "STOP YOUR FRIENDLIES... Guys seriously, stop your friendlies.. guys please"
+        elif rand == 6:
+            msg = "Guys my bayo kinda clean"
+        elif rand == 7:
+            msg = "Technically, in the last month, only counting in the SnyPhi Basement, only after 8:00 PM, I've only lost 3 money matches so far"
+        elif rand == 8:
+            msg = "Ridley"
+
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!nog"):
+        msg = "https://raw.githubusercontent.com/bhattarai333/bhattarai333.github.io/master/docs/Resources/memes/nog.jpg"
+        await client.send_message(message.channel, msg)
 
 
+    if message.content.startswith("!thank"):
+        msg = "You are very welcome, I live to serve"
+        await client.send_message(message.channel, msg)
     if message.content.startswith("!help"):
         await client.send_message(message.channel, "!create/LOCATION/START TIME/NUMBER OF SETUPS IN ROOM/NUMBER OF MONITORS IN ROOM    Creates a smashfest that others can join")
         await client.send_message(message.channel, "!list/SMASHFEST NUMBER                                                             Lets you view information about a smashfest")
@@ -209,7 +240,7 @@ async def on_message(message):
         await client.send_message(message.channel, "!monitors/SMASHFEST NUMBER                                                         Displays how many monitors are at a fest")
         await client.send_message(message.channel, "!end/SMASHFEST NUMBER                                                              Ends a smashfest")
     if message.content.startswith("!about"):
-        msg = "Hello, I am **SmashFest Bot v1.0.1**, created to help MSU students find places to play Smash 4/Smash Ultimate on campus. Direct any inquiries to J3(Josh Bhattarai).\n"
+        msg = "Hello, I am **SmashFest Bot v1.0.2**, created to help MSU students find places to play Smash 4/Smash Ultimate on campus. Direct any inquiries to J3(Josh Bhattarai).\n"
         msg = msg + "Written in Python 3.7, running in a free hosted Heroku Python 3.6.6 enviornment. Uses Discord.py by Rapptz.\n"
         msg = msg + "Please follow the MSU Smash 4 Twitter: https://twitter.com/msusmash4"
         await client.send_message(message.channel, msg)
