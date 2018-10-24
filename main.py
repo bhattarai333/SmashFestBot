@@ -92,8 +92,8 @@ class SmashFest:
                 setups += 1
             if info[1] == 1 or info[1] == '1':
                 monitors += 1
-            self.monitors = monitors
-            self.numSetups = setups
+        self.monitors = monitors
+        self.numSetups = setups
 
 
 
