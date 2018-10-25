@@ -202,6 +202,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     if message.content.startswith("!flare"):
         rand = random.randint(0, 7)
+        msg = "_"
         if rand == 0:
             msg = "Did you see my sick Fortnite win?"
         elif rand == 1:
@@ -227,6 +228,19 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     if message.content.startswith("!j\'haira") or message.content.startswith("!jhaira"):
         msg = "Did someone say PM?"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!justin"):
+        rand = random.randint(0, 2)
+        msg = "_"
+        if rand == 0:
+            msg = "Chicken Tendies"
+        elif rand == 1:
+            msg = "Chocy Milk"
+        elif rand == 2:
+            msg = "Sheik is a midtier character"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!matador"):
+        msg = "Little Mac actually wins that MU"
         await client.send_message(message.channel, msg)
 
 
