@@ -225,6 +225,9 @@ async def on_message(message):
     if message.content.startswith("!nog"):
         msg = "https://raw.githubusercontent.com/bhattarai333/bhattarai333.github.io/master/docs/Resources/memes/nog.jpg"
         await client.send_message(message.channel, msg)
+    if message.content.startswith("!j\'haira") or message.content.startswith("!jhaira"):
+        msg = "Did someone say PM?"
+        await client.send_message(message.channel, msg)
 
 
     if message.content.startswith("!thank"):
