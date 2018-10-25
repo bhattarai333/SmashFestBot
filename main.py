@@ -242,7 +242,18 @@ async def on_message(message):
     if message.content.startswith("!matador"):
         msg = "Little Mac actually wins that MU"
         await client.send_message(message.channel, msg)
-
+    if message.content.startswith("!aaron"):
+        rand = random.randint(0, 3)
+        msg = "_"
+        if rand == 0:
+            msg = "Shadow Ball!"
+        elif rand == 1:
+            msg = "Something something bdubs sux something im dum"
+        elif rand == 2:
+            msg = "Get outta my swamp"
+        elif rand == 3:
+            msg = "\*likes your tweet\*"
+        await client.send_message(message.channel, msg)
 
     if message.content.startswith("!thank"):
         msg = "You are very welcome, I live to serve"
