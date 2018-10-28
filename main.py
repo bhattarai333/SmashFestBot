@@ -253,6 +253,8 @@ async def on_message(message):
             msg = "Get outta my swamp"
         elif rand == 3:
             msg = "\*likes your tweet\*"
+        elif rand == 4:
+            msg = "Who's tryna play rivals?"
         await client.send_message(message.channel, msg)
 
     if message.content.startswith("!thank"):
