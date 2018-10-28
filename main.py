@@ -256,6 +256,9 @@ async def on_message(message):
         elif rand == 4:
             msg = "Who's tryna play rivals?"
         await client.send_message(message.channel, msg)
+    if message.content.startswith("!mikau") or message.content.startswith("!evan"):
+        msg = "NO ANIME ALLOWED"
+        await client.send_message(message.channel,msg)
 
     if message.content.startswith("!thank"):
         msg = "You are very welcome, I live to serve"
