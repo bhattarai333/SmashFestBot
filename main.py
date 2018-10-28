@@ -242,7 +242,7 @@ async def on_message(message):
     if message.content.startswith("!matador"):
         msg = "Little Mac actually wins that MU"
         await client.send_message(message.channel, msg)
-    if message.content.startswith("!aaron"):
+    if message.content.startswith("!aaron") or message.content.startswith("!ogre"):
         rand = random.randint(0, 3)
         msg = "_"
         if rand == 0:
