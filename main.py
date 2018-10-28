@@ -201,7 +201,7 @@ async def on_message(message):
         msg = "Please... Please prereg"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!flare"):
-        rand = random.randint(0, 7)
+        rand = random.randint(0, 8)
         msg = "_"
         if rand == 0:
             msg = "Did you see my sick Fortnite win?"
