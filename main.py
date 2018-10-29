@@ -286,8 +286,13 @@ async def on_message(message):
     if message.content.startswith("!setpriyank"):
         messageString = str(originalMessage)
         parts = messageString.split("/")
+        full_string = ""
+        for index, part in enumerate(parts):
+            if index == 0:
+                continue
+            full_string = full_string + part
         global weekly_prereg_link
-        weekly_prereg_link = parts[1]
+        weekly_prereg_link = full_string
 
     if message.content.startswith("!facebook"):
         msg = "https://www.facebook.com/groups/MSUSmash4/"
