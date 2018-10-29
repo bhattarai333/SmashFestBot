@@ -104,7 +104,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v1.1.0**"
+version = "**SmashFest Bot v1.2.0**"
 weekly_prereg_link = ""
 
 
