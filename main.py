@@ -118,7 +118,7 @@ async def on_message(message):
     message.content = message.content.lower()
     if message.author.id == client.user.id:
         return
-
+    time.sleep(0.2)
     if message.content.startswith('!hello') or message.content.startswith("!hi"):
         msg = 'Hello {0.author.mention} How are you today?'.format(message)
         await client.send_message(message.channel, msg)
@@ -261,6 +261,10 @@ async def on_message(message):
         msg = "NO ANIME ALLOWED"
         await client.send_message(message.channel,msg)
 
+
+    if message.content.startswith("!version"):
+        msg = version
+        await client.send_message(message.channel, msg)
     if message.content.startswith("!thank"):
         msg = "You are very welcome, I live to serve"
         await client.send_message(message.channel, msg)
@@ -278,6 +282,7 @@ async def on_message(message):
         msg = msg + "Written in Python 3.7, running in a free hosted Heroku Python 3.6.6 enviornment. Uses Discord.py by Rapptz.\n"
         msg = msg + "Please follow the MSU Smash 4 Twitter: https://twitter.com/msusmash4"
         await client.send_message(message.channel, msg)
+
     if message.content.startswith("!facebook"):
         msg = "https://www.facebook.com/groups/MSUsmash/"
         await client.send_message(message.channel, msg)
@@ -290,8 +295,8 @@ async def on_message(message):
     if message.content.startswith("!challonge"):
         msg = "https://spartanweeklies.challonge.com/"
         await client.send_message(message.channel, msg)
-    if message.content.startswith("!version"):
-        msg = version
+    if message.content.startwith("!discord"):
+        msg = "ESA Discord: https://discord.gg/56v3F6a\nMSU Smash4 Discord: https://discord.gg/Y9QRDqh"
         await client.send_message(message.channel, msg)
 
 
