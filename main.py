@@ -104,7 +104,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v1.2.1**"
+version = "**SmashFest Bot v2.0.0**"
 weekly_prereg_link = "No prereg link set ;("
 
 
@@ -290,6 +290,9 @@ async def on_message(message):
         msg = "Hello, I am %s, created to help MSU students find places to play Smash 4/Smash Ultimate on campus. Direct any inquiries to J3(Josh Bhattarai).\n" % version
         msg = msg + "Written in Python 3.7, running in a free hosted Heroku Python 3.6.6 enviornment. Uses Discord.py by Rapptz.\n"
         msg = msg + "Please follow the MSU Smash 4 Twitter: https://twitter.com/msusmash4"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!esa"):
+        msg = "I'm sorry for posting inappropriate images :("
         await client.send_message(message.channel, msg)
     if message.content.startswith("!setpriyank"):
         messageString = str(originalMessage)
