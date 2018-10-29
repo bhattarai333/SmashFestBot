@@ -290,7 +290,8 @@ async def on_message(message):
         for index, part in enumerate(parts):
             if index == 0:
                 continue
-            full_string = full_string + part
+            full_string = full_string + part + '/'
+        full_string = full_string[0:-1]
         global weekly_prereg_link
         weekly_prereg_link = full_string
 
