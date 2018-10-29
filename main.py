@@ -290,7 +290,7 @@ async def on_message(message):
         weekly_prereg_link = parts[0]
 
     if message.content.startswith("!facebook"):
-        msg = "https://www.facebook.com/groups/MSUsmash/"
+        msg = "https://www.facebook.com/groups/MSUSmash4/"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!twitter"):
         msg = "https://twitter.com/MSUsmash4"
