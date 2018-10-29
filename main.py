@@ -105,7 +105,7 @@ client = commands.Bot(command_prefix = ".")
 
 bdubs_emoji = "Yay BDubs"
 version = "**SmashFest Bot v1.2.0**"
-weekly_prereg_link = ""
+weekly_prereg_link = "No prereg link set :("
 
 
 
