@@ -104,7 +104,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v1.2.0**"
+version = "**SmashFest Bot v1.2.1**"
 weekly_prereg_link = "No prereg link set ;("
 
 
@@ -160,7 +160,7 @@ async def on_message(message):
 
         await client.send_message(message.channel, msg)
     if message.content.startswith("!cherpumple"):
-        rand = random.randint(0, 5)
+        rand = random.randint(0, 6)
         msg = "Did you mean "
         if rand == 0:
             msg = msg + "Cherpumpled?"
@@ -174,6 +174,8 @@ async def on_message(message):
             msg = msg + "Cherfluffle?"
         elif rand == 5:
             msg = msg + "Cherple?"
+        elif rand == 6:
+            msg = msg + "Chermpurple?"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!goma"):
         msg = "Another Dr. Pepper please"
