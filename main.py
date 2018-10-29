@@ -295,7 +295,7 @@ async def on_message(message):
     if message.content.startswith("!challonge"):
         msg = "https://spartanweeklies.challonge.com/"
         await client.send_message(message.channel, msg)
-    if message.content.startwith("!discord"):
+    if message.content.startswith("!discord"):
         msg = "ESA Discord: https://discord.gg/56v3F6a\nMSU Smash4 Discord: https://discord.gg/Y9QRDqh"
         await client.send_message(message.channel, msg)
 
