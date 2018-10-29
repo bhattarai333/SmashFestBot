@@ -123,7 +123,7 @@ async def on_message(message):
     if message.content.startswith('!hello') or message.content.startswith("!hi"):
         msg = 'Hello {0.author.mention} How are you today?'.format(message)
         await client.send_message(message.channel, msg)
-    if message.content.startswith("!mario"):
+    if message.content.startswith("!j3"):
         msg = "J3's Mario is sick af"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!69"):
@@ -262,7 +262,13 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     if message.content.startswith("!mikau") or message.content.startswith("!evan"):
         msg = "NO ANIME ALLOWED"
-        await client.send_message(message.channel,msg)
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!bread"):
+        msg = "Let's get this BDubs!"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!dayman"):
+        msg = "Money match me in Pokemon Snap"
+        await client.send_message(message.channel, msg)
 
 
     if message.content.startswith("!version"):
