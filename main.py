@@ -104,6 +104,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
 
 bdubs_emoji = "Yay BDubs"
+version = "**SmashFest Bot v1.1.0**"
 
 
 
@@ -273,7 +274,7 @@ async def on_message(message):
         await client.send_message(message.channel, "!monitors/SMASHFEST NUMBER                                                         Displays how many monitors are at a fest")
         await client.send_message(message.channel, "!end/SMASHFEST NUMBER                                                              Ends a smashfest")
     if message.content.startswith("!about"):
-        msg = "Hello, I am **SmashFest Bot v1.1.0**, created to help MSU students find places to play Smash 4/Smash Ultimate on campus. Direct any inquiries to J3(Josh Bhattarai).\n"
+        msg = "Hello, I am %s, created to help MSU students find places to play Smash 4/Smash Ultimate on campus. Direct any inquiries to J3(Josh Bhattarai).\n" % version
         msg = msg + "Written in Python 3.7, running in a free hosted Heroku Python 3.6.6 enviornment. Uses Discord.py by Rapptz.\n"
         msg = msg + "Please follow the MSU Smash 4 Twitter: https://twitter.com/msusmash4"
         await client.send_message(message.channel, msg)
@@ -288,6 +289,9 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     if message.content.startswith("!challonge"):
         msg = "https://spartanweeklies.challonge.com/"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!version"):
+        msg = version
         await client.send_message(message.channel, msg)
 
 
