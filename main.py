@@ -105,6 +105,7 @@ client = commands.Bot(command_prefix = ".")
 
 bdubs_emoji = "Yay BDubs"
 version = "**SmashFest Bot v1.1.0**"
+weekly_prereg_link = ""
 
 
 
@@ -282,6 +283,11 @@ async def on_message(message):
         msg = msg + "Written in Python 3.7, running in a free hosted Heroku Python 3.6.6 enviornment. Uses Discord.py by Rapptz.\n"
         msg = msg + "Please follow the MSU Smash 4 Twitter: https://twitter.com/msusmash4"
         await client.send_message(message.channel, msg)
+    if message.content.startswith("!setpriyank"):
+        messageString = str(originalMessage)
+        parts = messageString.split("/")
+        global weekly_prereg_link
+        weekly_prereg_link = parts[0]
 
     if message.content.startswith("!facebook"):
         msg = "https://www.facebook.com/groups/MSUsmash/"
@@ -297,6 +303,9 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     if message.content.startswith("!discord"):
         msg = "ESA Discord: https://discord.gg/56v3F6a\nMSU Smash4 Discord: https://discord.gg/Y9QRDqh"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!prereg"):
+        msg = weekly_prereg_link
         await client.send_message(message.channel, msg)
 
 
