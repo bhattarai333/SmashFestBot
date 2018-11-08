@@ -104,7 +104,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v2.0.0**"
+version = "**SmashFest Bot v2.0.1**"
 weekly_prereg_link = "No prereg link set ;("
 
 
@@ -274,6 +274,9 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     if message.content.startswith("!mo"):
         msg = "Did you mean Nebula echo fighter?"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!mika"):
+        msg = "I wanted to say something annoying and philosophical about staples but I can’t think of something"
         await client.send_message(message.channel, msg)
 
 
