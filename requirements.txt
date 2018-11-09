@@ -2,4 +2,3 @@ discord.py
 websockets
 aiohttp
 asyncio
-json
