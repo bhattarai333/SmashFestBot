@@ -5,6 +5,7 @@ import random
 import asyncio
 import time
 import os
+import json
 
 
 
@@ -99,13 +100,20 @@ class SmashFest:
 
 
 
-smashfests = []
+smashfests = os.environ.get("SMASHFESTS")
+if smashfests == "None :(":
+    smashfests = {}
+weekly_prereg_link = os.environ.get("PREREG")
+if weekly_prereg_link == "None :(":
+    weekly_prereg_link = "No weekly prereg link set ;("
+commentary_prereg_link = os.environ.get("COMMENTARY")
+if commentary_prereg_link == "None :(":
+    commentary_prereg_link = "No commentary prereg link set ;("
 Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
 
 bdubs_emoji = "Yay BDubs"
 version = "**SmashFest Bot v2.0.1**"
-weekly_prereg_link = "No prereg link set ;("
 
 
 
