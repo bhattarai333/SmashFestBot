@@ -5,7 +5,6 @@ import random
 import asyncio
 import time
 import os
-import json
 
 
 
@@ -113,7 +112,8 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v2.0.1**"
+version = "**SmashFest Bot v2.0.2**"
+pickle_counter = 0;
 
 
 
@@ -284,7 +284,17 @@ async def on_message(message):
         msg = "Did you mean Nebula echo fighter?"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!mika"):
-        msg = "I wanted to say something annoying and philosophical about staples but I can’t think of something"
+        rand = random.randint(0, 1)
+        msg = "_"
+        if rand == 0:
+            msg = "I wanted to say something annoying and philosophical about staples but I can’t think of something"
+        elif rand == 1:
+            msg = "***vibrates angrily***"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!pickle"):
+        global pickle_counter
+        pickle_counter += 1
+        msg = "I'm kinda nice #%s" % (pickle_counter)
         await client.send_message(message.channel, msg)
 
 
@@ -311,6 +321,18 @@ async def on_message(message):
     if message.content.startswith("!esa"):
         msg = "I'm sorry for posting inappropriate images :("
         await client.send_message(message.channel, msg)
+    if message.content.startswith("!setpriyank"):
+        messageString = str(originalMessage)
+        parts = messageString.split("/")
+        full_string = ""
+        for index, part in enumerate(parts):
+            if index == 0:
+                continue
+            full_string = full_string + part + '/'
+        full_string = full_string[0:-1]
+        global weekly_prereg_link
+        weekly_prereg_link = full_string
+
     if message.content.startswith("!setpriyank"):
         messageString = str(originalMessage)
         parts = messageString.split("/")
