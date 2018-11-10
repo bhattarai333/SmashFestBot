@@ -113,7 +113,7 @@ client = commands.Bot(command_prefix = ".")
 
 bdubs_emoji = "Yay BDubs"
 version = "**SmashFest Bot v2.0.2**"
-pickle_counter = 0;
+pickle_counter = 0
 
 
 
@@ -294,7 +294,7 @@ async def on_message(message):
     if message.content.startswith("!pickle"):
         global pickle_counter
         pickle_counter += 1
-        msg = "I'm kinda nice #%s" % (pickle_counter)
+        msg = "I'm kinda nice #%s" % pickle_counter
         await client.send_message(message.channel, msg)
 
 
