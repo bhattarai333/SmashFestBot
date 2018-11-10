@@ -345,6 +345,7 @@ async def on_message(message):
         #global weekly_prereg_link
         weekly_prereg_link = full_string
 
+
     if message.content.startswith("!facebook"):
         msg = "https://www.facebook.com/groups/MSUSmash4/"
         await client.send_message(message.channel, msg)
