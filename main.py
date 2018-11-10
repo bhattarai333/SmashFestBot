@@ -293,7 +293,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     if message.content.startswith("!pickle"):
         global pickle_counter
-        pickle_counter += 1
+        pickle_counter = pickle_counter + 1
         msg = "I'm kinda nice #%s" % pickle_counter
         await client.send_message(message.channel, msg)
 
@@ -342,7 +342,7 @@ async def on_message(message):
                 continue
             full_string = full_string + part + '/'
         full_string = full_string[0:-1]
-        global weekly_prereg_link
+        #global weekly_prereg_link
         weekly_prereg_link = full_string
 
     if message.content.startswith("!facebook"):
