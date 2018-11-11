@@ -112,7 +112,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v2.1.1**"
+version = "**SmashFest Bot v2.1.2**"
 pickle_counter = 0
 
 
@@ -447,7 +447,7 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
 
 
-    if message.content.startswith("!end"):
+    if message.content.startswith("!end") or message.content.startswith("!delete"):
         if not len(smashfests) == 0:
             try:
                 messageString = str(originalMessage)
