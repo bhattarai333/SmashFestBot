@@ -116,7 +116,6 @@ version = "**SmashFest Bot v2.1.0**"
 pickle_counter = 0
 
 
-
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name="Smash Ultimate"))
