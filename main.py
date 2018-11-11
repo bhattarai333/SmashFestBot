@@ -112,7 +112,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v2.1.0**"
+version = "**SmashFest Bot v2.1.1**"
 pickle_counter = 0
 
 
@@ -282,7 +282,7 @@ async def on_message(message):
     if message.content.startswith("!mo"):
         msg = "Did you mean Nebula echo fighter?"
         await client.send_message(message.channel, msg)
-    if message.content.startswith("!mika"):
+    if message.content.startswith("!mika") and not message.content.startswith("!mikau"):
         rand = random.randint(0, 1)
         msg = "_"
         if rand == 0:
