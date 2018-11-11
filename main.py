@@ -101,7 +101,7 @@ class SmashFest:
 
 smashfests = os.environ.get("SMASHFESTS")
 if smashfests == "None :(":
-    smashfests = {}
+    smashfests = list()
 weekly_prereg_link = os.environ.get("PREREG")
 if weekly_prereg_link == "None :(":
     weekly_prereg_link = "No weekly prereg link set ;("
@@ -112,7 +112,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v2.0.2**"
+version = "**SmashFest Bot v2.1.0**"
 pickle_counter = 0
 
 
