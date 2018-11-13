@@ -112,7 +112,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = ".")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v2.1.2**"
+version = "**SmashFest Bot v2.1.3**"
 pickle_counter = 0
 
 
@@ -294,6 +294,12 @@ async def on_message(message):
         global pickle_counter
         pickle_counter = pickle_counter + 1
         msg = "I'm kinda nice #%s" % pickle_counter
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!caps"):
+        msg = "Mii Swordfighter sux, sry bruh"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!lantas"):
+        msg = "plant"
         await client.send_message(message.channel, msg)
 
 
