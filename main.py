@@ -298,9 +298,6 @@ async def on_message(message):
     if message.content.startswith("!caps"):
         msg = "Mii Swordfighter sux, sry bruh"
         await client.send_message(message.channel, msg)
-    if message.content.startswith("!lantas"):
-        msg = "plant"
-        await client.send_message(message.channel, msg)
 
 
     if message.content.startswith("!version"):
