@@ -116,8 +116,6 @@ pickle_counter = 0
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name="Smash Ultimate"))
-    f = open("data.json", 'r')
-    print(f)
 
 
 @client.event
@@ -492,6 +490,6 @@ def save_data():
     secret_key = os.environ.get("JSONBIN_SECRET")
     headers = {'content-type': 'application/json', 'secret-key': secret_key, 'private': 'true'}
     response = requests.post("https://api.jsonbin.io/b", json.dumps(data), headers=headers)
-    print(response.text["id"])
+    print(response["id"])
 
 client.run(os.environ.get("TOKEN"))
