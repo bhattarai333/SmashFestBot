@@ -488,9 +488,10 @@ def save_data():
     data["smashfests"] = json.dumps([ob.__dict__ for ob in smashfests])
     data["weekly_prereg_link"] = weekly_prereg_link
     data["commentary_prereg_link"] = commentary_prereg_link
+    print(data)
 
     headers = {'content-type': 'application/json'}
-    response = requests.post("https://api.jsonbin.io/b", json.dump(data), headers=headers)
+    response = requests.post("https://api.jsonbin.io/b", json.dumps(data), headers=headers)
     print(response.text)
 
 client.run(os.environ.get("TOKEN"))
