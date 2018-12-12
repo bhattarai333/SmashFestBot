@@ -112,6 +112,9 @@ pickle_counter = 0
 @client.event
 async def on_ready():
     await client.change_presence(game=discord.Game(name="Smash Ultimate"))
+    f = open("data.json", 'r')
+    print(f)
+
 
 @client.event
 async def on_message(message):
