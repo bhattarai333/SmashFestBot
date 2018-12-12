@@ -109,7 +109,7 @@ commentary_prereg_link = os.environ.get("COMMENTARY")
 if commentary_prereg_link == "None :(":
     commentary_prereg_link = "No commentary prereg link set ;("
 Client = discord.Client()
-client = commands.Bot(command_prefix = ".")
+client = commands.Bot(command_prefix = "!")
 
 bdubs_emoji = "Yay BDubs"
 version = "**SmashFest Bot v2.1.3**"
@@ -334,6 +334,7 @@ async def on_message(message):
         full_string = full_string[0:-1]
         global weekly_prereg_link
         weekly_prereg_link = full_string
+        os.environ["PREREG"] = weekly_prereg_link
 
 
     if message.content.startswith("!facebook"):
