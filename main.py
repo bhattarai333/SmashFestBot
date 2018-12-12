@@ -5,8 +5,7 @@ import random
 import asyncio
 import time
 import os
-
-
+import json
 
 
 
@@ -99,15 +98,9 @@ class SmashFest:
 
 
 
-smashfests = os.environ.get("SMASHFESTS")
-if smashfests == "None :(":
-    smashfests = list()
-weekly_prereg_link = os.environ.get("PREREG")
-if weekly_prereg_link == "None :(":
-    weekly_prereg_link = "No weekly prereg link set ;("
-commentary_prereg_link = os.environ.get("COMMENTARY")
-if commentary_prereg_link == "None :(":
-    commentary_prereg_link = "No commentary prereg link set ;("
+smashfests = list()
+weekly_prereg_link = "No weekly prereg link set ;("
+commentary_prereg_link = "No commentary prereg link set ;("
 Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
 
@@ -334,7 +327,7 @@ async def on_message(message):
         full_string = full_string[0:-1]
         global weekly_prereg_link
         weekly_prereg_link = full_string
-        os.environ["PREREG"] = weekly_prereg_link
+        save_data()
 
 
     if message.content.startswith("!facebook"):
@@ -369,6 +362,7 @@ async def on_message(message):
         except IndexError:
             msg = "Format your message like this(don't include parentheses): !create/Snyphi Basement(Location)/7:34 PM(Start Time)/1(Setup)/2(monitors)"
         await client.send_message(message.channel, msg)
+        save_data()
 
     if message.content.startswith("!list"):
         msg = ""
@@ -397,6 +391,7 @@ async def on_message(message):
         else:
             msg = "There are no current smashfests, try creating one with !create"
         await client.send_message(message.channel, msg)
+        save_data()
 
     if message.content.startswith("!removeme"):
         if not len(smashfests) == 0:
@@ -414,6 +409,7 @@ async def on_message(message):
         else:
             msg = "There are no current smashfests, try creating one with !create"
         await client.send_message(message.channel, msg)
+        save_data()
 
     if message.content.startswith("!participants"):
         if not len(smashfests) == 0:
@@ -474,6 +470,18 @@ async def on_message(message):
         else:
             msg = "There are no current smashfests, try creating one with !create"
         await client.send_message(message.channel, msg)
+        save_data()
 
+def save_data():
+    global smashfests
+    global weekly_prereg_link
+    global commentary_prereg_link
+
+    data = {}
+    data["smashfests"] = smashfests
+    data["weekly_prereg_link"] = weekly_prereg_link
+    data["commentary_prereg_link"] = commentary_prereg_link
+    with open('data.json', 'w') as outfile:
+        json.dump(data, outfile, indent=4)
 
 client.run(os.environ.get("TOKEN"))
