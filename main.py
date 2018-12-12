@@ -489,5 +489,7 @@ def save_data():
     data["commentary_prereg_link"] = commentary_prereg_link
     with open('data.json', 'w') as outfile:
         json.dump(data, outfile, indent=4)
+    f = open("data.json", 'r')
+    print(f)
 
 client.run(os.environ.get("TOKEN"))
