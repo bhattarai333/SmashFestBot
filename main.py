@@ -6,6 +6,7 @@ import asyncio
 import time
 import os
 import json
+import requests
 
 
 
@@ -487,9 +488,9 @@ def save_data():
     data["smashfests"] = json.dumps([ob.__dict__ for ob in smashfests])
     data["weekly_prereg_link"] = weekly_prereg_link
     data["commentary_prereg_link"] = commentary_prereg_link
-    with open('data.json', 'w') as outfile:
-        json.dump(data, outfile, indent=4)
-    f = open("data.json", 'r')
-    print(f)
+
+    headers = {'content-type': 'application/json'}
+    response = requests.post("https://api.jsonbin.io/b", data, headers=headers)
+    print(response.text)
 
 client.run(os.environ.get("TOKEN"))
