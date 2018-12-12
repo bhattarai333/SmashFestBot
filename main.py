@@ -21,6 +21,8 @@ class SmashFest:
     monitors = 0
     numSetups = 0
 
+
+
     def __init__(self, owner, location, startTime):
         self.owner = owner
         self.participants = {}
@@ -41,6 +43,7 @@ class SmashFest:
     def tostr(self, index):
         output = "Smashfest #%s Owner: %s Location: %s Time: %s Setups: %s Monitors: %s\n" % (index + 1, self.owner, self.location, self.startTime, self.getSetups(), self.getMonitors())
         return output
+
 
     def addParticipant(self, person, setup, monitor):
         setup = setup.strip()
@@ -481,7 +484,7 @@ def save_data():
     global commentary_prereg_link
 
     data = {}
-    data["smashfests"] = smashfests
+    data["smashfests"] = json.dumps([ob.__dict__ for ob in smashfests])
     data["weekly_prereg_link"] = weekly_prereg_link
     data["commentary_prereg_link"] = commentary_prereg_link
     with open('data.json', 'w') as outfile:
