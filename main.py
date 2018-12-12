@@ -490,7 +490,7 @@ def save_data():
     data["commentary_prereg_link"] = commentary_prereg_link
 
     headers = {'content-type': 'application/json'}
-    response = requests.post("https://api.jsonbin.io/b", data, headers=headers)
+    response = requests.post("https://api.jsonbin.io/b", json.dump(data), headers=headers)
     print(response.text)
 
 client.run(os.environ.get("TOKEN"))
