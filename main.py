@@ -122,11 +122,12 @@ async def on_ready():
     global weekly_prereg_link
     global commentary_prereg_link
     global smashfests
+    global secret_key
 
-    headers = {'content-type': 'application/json', 'secret-key': "$2a$10$DnT9AypG7TGsSmtXTNa5OOX.357G/mNx8IZEQej.oJYo2gfaex5im"}
+    headers = {'content-type': 'application/json', 'secret-key': secret_key}
     response = requests.get("https://api.jsonbin.io/b/" + ID, headers=headers)
     print(response.text)
-    response = json.loads(response)
+    response = json.load(response)
 
     #weekly_prereg_link = response["weekly_prereg_link"]
     #commentary_prereg_link = response["commentary_prereg_link"]
