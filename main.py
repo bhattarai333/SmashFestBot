@@ -488,8 +488,8 @@ def save_data():
     data["commentary_prereg_link"] = commentary_prereg_link
     print(data)
     secret_key = os.environ.get("JSONBIN_SECRET")
-    headers = {'content-type': 'application/json', 'secret-key': secret_key, 'private': 'true'}
-    response = requests.post("https://api.jsonbin.io/b", json.dumps(data), headers=headers)
+    headers = {'content-type': 'application/json', 'secret-key': secret_key, 'versioning': "false"}
+    response = requests.put("https://api.jsonbin.io/b/5c1202bdf35b3d1274b7f790", json.dumps(data), headers=headers)
     print(response.text)
 
 client.run(os.environ.get("TOKEN"))
