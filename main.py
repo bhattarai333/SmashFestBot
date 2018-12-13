@@ -106,8 +106,8 @@ class SmashFest:
 smashfests = list()
 weekly_prereg_link = "No weekly prereg link set ;("
 commentary_prereg_link = "No commentary prereg link set ;("
-ID = None
-secret_key = None
+ID = os.environ.get("JSONBIN_ID")
+secret_key = os.environ.get("JSONBIN_SECRET")
 Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
 
@@ -122,11 +122,6 @@ async def on_ready():
     global weekly_prereg_link
     global commentary_prereg_link
     global smashfests
-    global ID
-    global secret_key
-
-    ID = os.environ.get("BIN_ID")
-    secret_key = os.environ.get("SECRET_KEY")
 
     headers = {'content-type': 'application/json', 'secret-key': secret_key}
     response = requests.get("https://api.jsonbin.io/b/" + ID, headers=headers)
