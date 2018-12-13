@@ -124,18 +124,18 @@ async def on_ready():
     global smashfests
 
     headers = {'content-type': 'application/json', 'secret-key': secret_key}
-    response = requests.get("https://api.jsonbin.io/b/5c12094d279ac6128f5917bb", headers=headers)
+    response = requests.get("https://api.jsonbin.io/b/" + ID, headers=headers)
     print(response)
     response = json.loads(response)
 
-    weekly_prereg_link = response["weekly_prereg_link"]
-    commentary_prereg_link = response["commentary_prereg_link"]
-    json_smashfests = response["smashfests"]
-    for fest in json_smashfests:
-        sf = SmashFest(fest["owner"], fest["location"], fest["startTime"])
-        sf.initialSetups = fest["initialSetups"]
-        sf.initialMonitors = fest["initialMonitors"]
-        smashfests.append(sf)
+    #weekly_prereg_link = response["weekly_prereg_link"]
+    #commentary_prereg_link = response["commentary_prereg_link"]
+    #json_smashfests = response["smashfests"]
+    #for fest in json_smashfests:
+        #sf = SmashFest(fest["owner"], fest["location"], fest["startTime"])
+        #sf.initialSetups = fest["initialSetups"]
+        #sf.initialMonitors = fest["initialMonitors"]
+        #smashfests.append(sf)
 
 @client.event
 async def on_message(message):
