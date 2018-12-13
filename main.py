@@ -129,14 +129,15 @@ async def on_ready():
     weekly_prereg_link = response["weekly_prereg_link"]
     commentary_prereg_link = response["commentary_prereg_link"]
     json_smashfests = response["smashfests"]
-    print("WHOLE FEST LIST: %s" % json_smashfests)
     json_smashfests = json.loads(json_smashfests)
     for fest in json_smashfests:
-        print(fest)
-        #fest = json.loads(fest)
         sf = SmashFest(fest["owner"], fest["location"], fest["startTime"])
         sf.initialSetups = fest["initialSetups"]
         sf.initialMonitors = fest["initialMonitors"]
+        participants = fest["participants"]
+        for participant in participants:
+            info = participants[participant]
+            sf.addParticipant(participant, info[0], info[1])
         smashfests.append(sf)
 
 @client.event
