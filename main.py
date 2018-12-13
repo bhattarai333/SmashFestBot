@@ -492,5 +492,4 @@ def save_data():
     response = requests.post("https://api.jsonbin.io/b", json.dumps(data), headers=headers)
     print(response.text["id"])
 
-
 client.run(os.environ.get("TOKEN"))
