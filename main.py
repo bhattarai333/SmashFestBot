@@ -490,6 +490,6 @@ def save_data():
     secret_key = os.environ.get("JSONBIN_SECRET")
     headers = {'content-type': 'application/json', 'secret-key': secret_key, 'private': 'true'}
     response = requests.post("https://api.jsonbin.io/b", json.dumps(data), headers=headers)
-    print(response.text["id"])
+    print(response.text)
 
 client.run(os.environ.get("TOKEN"))
