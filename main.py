@@ -48,8 +48,10 @@ class SmashFest:
 
 
     def addParticipant(self, person, setup, monitor):
-        setup = setup.strip()
-        monitor = monitor.strip()
+        if not type(setup) == int:
+            setup = setup.strip()
+        if not type(monitor) == int:
+            monitor = monitor.strip()
         if setup == "yes" or int(setup) > 0:
             setup = 1
         else:
