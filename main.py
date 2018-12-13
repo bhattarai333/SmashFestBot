@@ -123,7 +123,7 @@ async def on_ready():
     global commentary_prereg_link
     global smashfests
     global secret_key
-
+    print(secret_key)
     headers = {'content-type': 'application/json', 'secret-key': secret_key}
     response = requests.get("https://api.jsonbin.io/b/" + ID, headers=headers)
     print(response.text)
