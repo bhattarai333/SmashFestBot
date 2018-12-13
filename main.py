@@ -108,6 +108,8 @@ weekly_prereg_link = "No weekly prereg link set ;("
 commentary_prereg_link = "No commentary prereg link set ;("
 Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
+ID = os.environ.get("BIN_ID")
+secret_key = os.environ.get("SECRET_KEY")
 
 bdubs_emoji = "Yay BDubs"
 version = "**SmashFest Bot v3.0.0**"
@@ -116,8 +118,24 @@ pickle_counter = 0
 
 @client.event
 async def on_ready():
-    await client.change_presence(game=discord.Game(name="Smash Ultimate"))
+    await client.change_presence(game=discord.Game(name="Smash Ultimate 2"))
+    global weekly_prereg_link
+    global commentary_prereg_link
+    global smashfests
 
+    headers = {'content-type': 'application/json', 'secret-key': secret_key}
+    response = requests.get("https://api.jsonbin.io/b/5c12094d279ac6128f5917bb", headers=headers)
+    print(response)
+    response = json.loads(response)
+
+    weekly_prereg_link = response["weekly_prereg_link"]
+    commentary_prereg_link = response["commentary_prereg_link"]
+    json_smashfests = response["smashfests"]
+    for fest in json_smashfests:
+        sf = SmashFest(fest["owner"], fest["location"], fest["startTime"])
+        sf.initialSetups = fest["initialSetups"]
+        sf.initialMonitors = fest["initialMonitors"]
+        smashfests.append(sf)
 
 @client.event
 async def on_message(message):
@@ -491,9 +509,8 @@ def save_data():
     data["smashfests"] = json.dumps([ob.__dict__ for ob in smashfests])
     data["weekly_prereg_link"] = weekly_prereg_link
     data["commentary_prereg_link"] = commentary_prereg_link
-    secret_key = os.environ.get("JSONBIN_SECRET")
     headers = {'content-type': 'application/json', 'secret-key': secret_key, 'versioning': 'false'}
-    response = requests.put("https://api.jsonbin.io/b/5c12094d279ac6128f5917bb", json.dumps(data), headers=headers)
+    response = requests.put("https://api.jsonbin.io/b/" + ID, json.dumps(data), headers=headers)
     print(response.text)
 
 client.run(os.environ.get("TOKEN"))
