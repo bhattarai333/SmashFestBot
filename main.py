@@ -125,14 +125,13 @@ async def on_ready():
 
     headers = {'content-type': 'application/json', 'secret-key': secret_key}
     response = requests.get("https://api.jsonbin.io/b/" + ID, headers=headers)
-    print(response.text)
     response = json.loads(response.text)
     weekly_prereg_link = response["weekly_prereg_link"]
     commentary_prereg_link = response["commentary_prereg_link"]
     json_smashfests = response["smashfests"]
     for fest in json_smashfests:
         print(fest)
-        fest = json.loads(fest)
+        #fest = json.loads(fest)
         sf = SmashFest(fest["owner"], fest["location"], fest["startTime"])
         sf.initialSetups = fest["initialSetups"]
         sf.initialMonitors = fest["initialMonitors"]
