@@ -131,6 +131,8 @@ async def on_ready():
     commentary_prereg_link = response["commentary_prereg_link"]
     json_smashfests = response["smashfests"]
     for fest in json_smashfests:
+        print(fest)
+        fest = json.loads(fest)
         sf = SmashFest(fest["owner"], fest["location"], fest["startTime"])
         sf.initialSetups = fest["initialSetups"]
         sf.initialMonitors = fest["initialMonitors"]
