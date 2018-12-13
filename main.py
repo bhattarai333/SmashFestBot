@@ -127,7 +127,7 @@ async def on_ready():
     headers = {'content-type': 'application/json', 'secret-key': secret_key}
     response = requests.get("https://api.jsonbin.io/b/" + ID, headers=headers)
     print(response.text)
-    response = json.load(response)
+    response = json.load(response.text)
 
     #weekly_prereg_link = response["weekly_prereg_link"]
     #commentary_prereg_link = response["commentary_prereg_link"]
