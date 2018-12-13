@@ -7,6 +7,7 @@ import time
 import os
 import json
 import requests
+import sys
 
 
 
@@ -334,6 +335,10 @@ async def on_message(message):
         weekly_prereg_link = full_string
         save_data()
 
+    if message.content.startswith("!terminate"):
+        sys.exit(0)
+        pass
+
 
     if message.content.startswith("!facebook"):
         msg = "https://www.facebook.com/groups/MSUSmash4/"
@@ -486,10 +491,8 @@ def save_data():
     data["smashfests"] = json.dumps([ob.__dict__ for ob in smashfests])
     data["weekly_prereg_link"] = weekly_prereg_link
     data["commentary_prereg_link"] = commentary_prereg_link
-    print(data)
     secret_key = os.environ.get("JSONBIN_SECRET")
     headers = {'content-type': 'application/json', 'secret-key': secret_key, 'versioning': "false"}
     response = requests.put("https://api.jsonbin.io/b/5c1202bdf35b3d1274b7f790", json.dumps(data), headers=headers)
-    print(response.text)
 
 client.run(os.environ.get("TOKEN"))
