@@ -129,7 +129,7 @@ async def on_ready():
     weekly_prereg_link = response["weekly_prereg_link"]
     commentary_prereg_link = response["commentary_prereg_link"]
     json_smashfests = response["smashfests"]
-    print(json_smashfests)
+    print("WHOLE FEST LIST: %s" % json_smashfests)
     json_smashfests = json.loads(json_smashfests)
     for fest in json_smashfests:
         print(fest)
