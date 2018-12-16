@@ -512,18 +512,14 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
         save_data()
 
+
 def save_data():
-    global smashfests
-    global weekly_prereg_link
-    global commentary_prereg_link
-
-
     data = {}
     data["smashfests"] = json.dumps([ob.__dict__ for ob in smashfests])
     data["weekly_prereg_link"] = weekly_prereg_link
     data["commentary_prereg_link"] = commentary_prereg_link
     headers = {'content-type': 'application/json', 'secret-key': secret_key, 'versioning': 'false'}
     response = requests.put("https://api.jsonbin.io/b/" + ID, json.dumps(data), headers=headers)
-    #print(response.text)
+    print(response.text)
 
 client.run(os.environ.get("TOKEN"))
