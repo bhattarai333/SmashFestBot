@@ -114,7 +114,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v3.0.0**"
+version = "**SmashFest Bot v3.1.0**"
 pickle_counter = 0
 
 
@@ -144,10 +144,10 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    originalMessage = message.content
-    message.content = message.content.lower()
     if message.author.id == client.user.id:
         return
+    originalMessage = message.content
+    message.content = message.content.lower()
     time.sleep(0.2)
     if message.content.startswith('!hello') or message.content.startswith("!hi"):
         msg = 'Hello {0.author.mention} How are you today?'.format(message)
@@ -381,6 +381,9 @@ async def on_message(message):
     if message.content.startswith("!prereg"):
         msg = weekly_prereg_link
         await client.send_message(message.channel, msg)
+    if message.content.startswith("!fc") or message.content.startswith("!friendcode"):
+        msg = "https://docs.google.com/spreadsheets/d/1GZhq7PQ0NlfxLJffsZHB2ktasVajD0Ya_faC0QVEe0k/edit#gid=0"
+        await client.send_message(message.channel, msg)
 
 
     if message.content.startswith("!create"):
@@ -510,12 +513,13 @@ def save_data():
     global weekly_prereg_link
     global commentary_prereg_link
 
+
     data = {}
     data["smashfests"] = json.dumps([ob.__dict__ for ob in smashfests])
     data["weekly_prereg_link"] = weekly_prereg_link
     data["commentary_prereg_link"] = commentary_prereg_link
     headers = {'content-type': 'application/json', 'secret-key': secret_key, 'versioning': 'false'}
     response = requests.put("https://api.jsonbin.io/b/" + ID, json.dumps(data), headers=headers)
-    print(response.text)
+    #print(response.text)
 
 client.run(os.environ.get("TOKEN"))
