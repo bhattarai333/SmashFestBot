@@ -114,13 +114,10 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v3.1.1**"
+version = "**SmashFest Bot v3.1.2**"
 pickle_counter = 0
 
-
-@client.event
-async def on_ready():
-    await client.change_presence(game=discord.Game(name="Money Matches with Carter"))
+def load_data_from_jsonbin():
     global weekly_prereg_link
     global commentary_prereg_link
     global smashfests
@@ -141,6 +138,13 @@ async def on_ready():
             info = participants[participant]
             sf.addParticipant(participant, info[0], info[1])
         smashfests.append(sf)
+
+@client.event
+async def on_ready():
+    await client.change_presence(game=discord.Game(name="Money Matches with Carter"))
+    load_data_from_jsonbin()
+
+
 
 @client.event
 async def on_message(message):
