@@ -120,7 +120,7 @@ pickle_counter = 0
 
 @client.event
 async def on_ready():
-    await client.change_presence(game=discord.Game(name="Smash Ultimate 2"))
+    await client.change_presence(game=discord.Game(name="Money Matches with Carter"))
     global weekly_prereg_link
     global commentary_prereg_link
     global smashfests
