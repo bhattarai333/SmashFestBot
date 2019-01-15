@@ -8,8 +8,7 @@ import os
 import json
 import requests
 import sys
-
-
+import SmashFest
 
 
 
@@ -102,9 +101,6 @@ class SmashFest:
         self.numSetups = setups
 
 
-
-
-
 smashfests = list()
 weekly_prereg_link = "No weekly prereg link set ;("
 commentary_prereg_link = "No commentary prereg link set ;("
@@ -152,6 +148,9 @@ async def on_message(message):
         return
     originalMessage = message.content
     message.content = message.content.lower()
+    if message.content.startswith("!terminate"):
+        sys.exit(0)
+        pass
     time.sleep(0.2)
     if message.content.startswith('!hello') or message.content.startswith("!hi"):
         msg = 'Hello {0.author.mention} How are you today?'.format(message)
@@ -220,7 +219,7 @@ async def on_message(message):
         msg = "Did you mean sick Mario?"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!mm") or message.content.startswith("!moneymatch"):
-        msg = "me Carter";
+        msg = "me Carter"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!slam") or message.content.startswith("!danny"):
         msg = "Don't get greedy!"
@@ -324,6 +323,9 @@ async def on_message(message):
     if message.content.startswith("!caps"):
         msg = "Mii Swordfighter sux, sry bruh"
         await client.send_message(message.channel, msg)
+    if message.content.startswith("!woofle"):
+        msg = "woofle is a fgt"
+        await client.send_message(message.channel, msg)
 
 
     if message.content.startswith("!version"):
@@ -362,10 +364,6 @@ async def on_message(message):
         weekly_prereg_link = full_string
         save_data()
 
-    if message.content.startswith("!terminate"):
-        sys.exit(0)
-        pass
-
 
     if message.content.startswith("!facebook"):
         msg = "https://www.facebook.com/groups/MSUSmash4/"
@@ -384,6 +382,9 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     if message.content.startswith("!prereg"):
         msg = weekly_prereg_link
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!commentary"):
+        msg = commentary_prereg_link
         await client.send_message(message.channel, msg)
     if message.content.startswith("!fc") or message.content.startswith("!friendcode"):
         msg = "https://docs.google.com/spreadsheets/d/1GZhq7PQ0NlfxLJffsZHB2ktasVajD0Ya_faC0QVEe0k/edit#gid=0"
