@@ -118,7 +118,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v3.1.3**"
+version = "**SmashFest Bot v3.1.4**"
 pickle_counter = 0
 
 def load_data_from_jsonbin():
@@ -468,7 +468,10 @@ async def on_message(message):
                     return
                 msg = smashfests[fest].listParticipants()
             except IndexError or TypeError:
-                msg = "Format your message like this: !participants/1(Smashfest number)"
+                if len(smashfests) == 1:
+                    msg = smashfests[0].listParticipants()
+                else:
+                    msg = "Format your message like this: !participants/1(Smashfest number)"
         else:
             msg = "There are no current smashfests, try creating one with !create"
         await client.send_message(message.channel, msg)
