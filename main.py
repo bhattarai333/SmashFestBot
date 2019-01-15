@@ -121,6 +121,7 @@ bdubs_emoji = "Yay BDubs"
 version = "**SmashFest Bot v3.1.4**"
 pickle_counter = 0
 
+
 def load_data_from_jsonbin():
     global weekly_prereg_link
     global commentary_prereg_link
