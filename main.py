@@ -323,9 +323,6 @@ async def on_message(message):
     if message.content.startswith("!caps"):
         msg = "Mii Swordfighter sux, sry bruh"
         await client.send_message(message.channel, msg)
-    if message.content.startswith("!woofle"):
-        msg = "woofle is a fgt"
-        await client.send_message(message.channel, msg)
 
 
     if message.content.startswith("!version"):
