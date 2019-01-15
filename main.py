@@ -55,7 +55,9 @@ class SmashFest:
             setup = 1
         else:
             setup = 0
-        if monitor == "yes" or int(monitor) > 0:
+        if monitor == "yes":
+            monitor = 1
+        elif int(monitor) > 0:
             monitor = 1
         else:
             monitor = 0
