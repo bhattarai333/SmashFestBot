@@ -51,12 +51,18 @@ class SmashFest:
             setup = setup.strip()
         if not type(monitor) == int:
             monitor = monitor.strip()
-        if setup == "yes" or int(setup) > 0:
+        if setup == "yes":
+            setup = 1
+        elif setup == "no":
+            setup = 0
+        elif int(setup) > 0:
             setup = 1
         else:
             setup = 0
         if monitor == "yes":
             monitor = 1
+        elif monitor == "no":
+            monitor = 0
         elif int(monitor) > 0:
             monitor = 1
         else:
