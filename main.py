@@ -112,7 +112,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v3.1.2**"
+version = "**SmashFest Bot v3.1.3**"
 pickle_counter = 0
 
 def load_data_from_jsonbin():
