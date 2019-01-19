@@ -375,7 +375,7 @@ async def on_message(message):
 
 
     if message.content.startswith("!facebook"):
-        msg = "https://www.facebook.com/groups/MSUSmash4/"
+        msg = "https://www.facebook.com/groups/MSUSmashUlt/"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!twitter"):
         msg = "https://twitter.com/MSUsmashUlt"
@@ -387,7 +387,7 @@ async def on_message(message):
         msg = "https://spartanweeklies.challonge.com/"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!discord"):
-        msg = "ESA Discord: https://discord.gg/56v3F6a\nMSU Smash4 Discord: https://discord.gg/Y9QRDqh"
+        msg = "ESA Discord: https://discord.gg/56v3F6a\nMSU Smash Ultimate Discord: https://discord.gg/Y9QRDqh"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!prereg"):
         msg = weekly_prereg_link
