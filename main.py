@@ -118,7 +118,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v3.1.4**"
+version = "**SmashFest Bot v3.1.5**"
 pickle_counter = 0
 
 
@@ -245,7 +245,7 @@ async def on_message(message):
     if message.content.startswith("!sam"):
         msg = "Please... Please prereg"
         await client.send_message(message.channel, msg)
-    if message.content.startswith("!flare") or message.content.startswith("!blueflare10"):
+    if message.content.startswith("!artisan"):
         rand = random.randint(0, 8)
         msg = "_"
         if rand == 0:
@@ -267,6 +267,9 @@ async def on_message(message):
         elif rand == 8:
             msg = "Ridley"
 
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!blueflare") or message.content.startswith("!flare"):
+        msg = "My Dawg!"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!nog"):
         msg = "https://raw.githubusercontent.com/bhattarai333/bhattarai333.github.io/master/docs/Resources/memes/nog.jpg"
@@ -352,7 +355,7 @@ async def on_message(message):
     if message.content.startswith("!about"):
         msg = "Hello, I am %s, created to help MSU students find places to play Smash 4/Smash Ultimate on campus. Direct any inquiries to J3(Josh Bhattarai).\n" % version
         msg = msg + "Written in Python 3.7, running in a free hosted Heroku Python 3.6.6 enviornment. Uses Discord.py by Rapptz.\n"
-        msg = msg + "Please follow the MSU Smash 4 Twitter: https://twitter.com/msusmash4"
+        msg = msg + "Please follow the MSU Smash 4 Twitter: https://twitter.com/MSUSmashUlt"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!esa"):
         msg = "I'm sorry for posting inappropriate images :("
@@ -375,7 +378,7 @@ async def on_message(message):
         msg = "https://www.facebook.com/groups/MSUSmash4/"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!twitter"):
-        msg = "https://twitter.com/MSUsmash4"
+        msg = "https://twitter.com/MSUsmashUlt"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!youtube"):
         msg = "https://www.youtube.com/channel/UCvMLi4Iq6xYDRnjc6eJ4IhA"
