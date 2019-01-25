@@ -268,7 +268,7 @@ async def on_message(message):
             msg = "Ridley"
 
         await client.send_message(message.channel, msg)
-    if message.content.startswith("!blueflare") or message.content.startswith("!flare"):
+    if message.content.startswith("!blueflare") or message.content.startswith("!flare") or message.content.startswith("!artesian"):
         msg = "My Dawg!"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!nog"):
@@ -334,6 +334,9 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     if message.content.startswith("!caps"):
         msg = "Mii Swordfighter sux, sry bruh"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!paulo"):
+        msg = "Yoshi BUSTED"
         await client.send_message(message.channel, msg)
 
 
