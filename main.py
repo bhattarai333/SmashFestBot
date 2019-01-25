@@ -118,7 +118,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v3.1.5**"
+version = "**SmashFest Bot v3.1.6**"
 pickle_counter = 0
 
 
