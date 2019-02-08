@@ -118,7 +118,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v3.1.6**"
+version = "**SmashFest Bot v3.1.7**"
 pickle_counter = 0
 
 
@@ -246,7 +246,7 @@ async def on_message(message):
         msg = "Please... Please prereg"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!artisan"):
-        rand = random.randint(0, 8)
+        rand = random.randint(0, 9)
         msg = "_"
         if rand == 0:
             msg = "Did you see my sick Fortnite win?"
@@ -266,6 +266,8 @@ async def on_message(message):
             msg = "Technically, in the last month, only counting in the SnyPhi Basement, only after 8:00 PM, I've only lost 3 money matches so far"
         elif rand == 8:
             msg = "Ridley"
+        elif rand == 9:
+            msg = "my tumbly is making a rumble that only bdubs can satisfy"
 
         await client.send_message(message.channel, msg)
     if message.content.startswith("!blueflare") or message.content.startswith("!flare") or message.content.startswith("!artesian"):
