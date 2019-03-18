@@ -118,7 +118,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v3.1.7**"
+version = "**SmashFest Bot v3.1.8**"
 pickle_counter = 0
 
 
@@ -340,7 +340,9 @@ async def on_message(message):
     if message.content.startswith("!paulo"):
         msg = "Yoshi BUSTED"
         await client.send_message(message.channel, msg)
-
+    if message.content.startswith("!big"):
+        msg = "GOMER"
+        await client.send_message(message.channel, msg)
 
     if message.content.startswith("!version"):
         msg = version
