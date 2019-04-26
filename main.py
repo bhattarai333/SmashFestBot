@@ -246,7 +246,7 @@ async def on_message(message):
         msg = "Please... Please prereg"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!artisan"):
-        rand = random.randint(0, 9)
+        rand = random.randint(0, 10)
         msg = "_"
         if rand == 0:
             msg = "Did you see my sick Fortnite win?"
@@ -268,6 +268,8 @@ async def on_message(message):
             msg = "Ridley"
         elif rand == 9:
             msg = "my tumbly is making a rumble that only bdubs can satisfy"
+        elif rand == 10:
+            msg = "Have you guys heard of this game Final Fantasy VII??? It's so good!!! You guys!!!"
 
         await client.send_message(message.channel, msg)
     if message.content.startswith("!blueflare") or message.content.startswith("!flare") or message.content.startswith("!artesian"):
@@ -342,6 +344,9 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     if message.content.startswith("!big"):
         msg = "GOMER"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!impeach"):
+        msg = "Carter"
         await client.send_message(message.channel, msg)
 
     if message.content.startswith("!version"):
