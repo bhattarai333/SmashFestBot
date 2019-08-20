@@ -118,7 +118,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v3.1.11**"
+version = "**SmashFest Bot v3.1.9**"
 pickle_counter = 0
 
 
@@ -157,47 +157,6 @@ async def on_message(message):
         return
     originalMessage = message.content
     message.content = message.content.lower()
-    #message.content = message.content.replace('а', 'a')
-    #message.content = message.content.replace('а', 'a')
-    #message.content = message.content.replace('с', 'c')
-    #message.content = message.content.replace('ℂ', 'c')
-    #message.content = message.content.replace('℃', 'c')
-    #message.content = message.content.replace('е', 'e')
-    #message.content = message.content.replace('ё', 'e')
-    #message.content = message.content.replace('℮', 'e')
-    #message.content = message.content.replace('ℯ', 'e')
-    #message.content = message.content.replace('ℰ', 'e')
-    #message.content = message.content.replace('ⅇ', 'e')
-    #message.content = message.content.replace('ɇ', 'e')
-    #message.content = message.content.replace('℉', 'f')
-    #message.content = message.content.replace('ℋ', 'h')
-    #message.content = message.content.replace('ℌ', 'h')
-    #message.content = message.content.replace('ℍ', 'h')
-    #message.content = message.content.replace('ℎ', 'h')
-    #message.content = message.content.replace('ℏ', 'h')
-    #message.content = message.content.replace('н', 'h')
-    #message.content = message.content.replace('ℹ', 'i')
-    #message.content = message.content.replace('ℹ', 'i')
-    #message.content = message.content.replace('ℹ︎', 'i')
-    #message.content = message.content.replace('ℹ️', 'i')
-    #message.content = message.content.replace('ⅈ', 'i')
-    #message.content = message.content.replace('ℐ', 'j')
-    #message.content = message.content.replace('к', 'k')
-    #message.content = message.content.replace('м', 'm')
-    #message.content = message.content.replace('ℴ', 'o')
-    #message.content = message.content.replace('ℴ', 'o')
-    #message.content = message.content.replace('о', 'o')
-    #message.content = message.content.replace('р', 'p')
-    #message.content = message.content.replace('ｱ', 'p')
-    #message.content = message.content.replace('г', 'r')
-    #message.content = message.content.replace('г', 'r')
-    #message.content = message.content.replace('т', 't')
-    #message.content = message.content.replace('у', 'y')
-    #message.content = message.content.replace('ȥ', 'z')
-    #message.content = message.content.replace('乙', 'z')
-    #message.content = message.content.replace('ȥ', 'z')
-    #message.content = message.content.replace('ȥ', 'z')#/
-
     if message.content.startswith("!terminate"):
         sys.exit(0)
         pass
@@ -217,7 +176,7 @@ async def on_message(message):
     if message.content.startswith("!mario"):
         msg = "J3 has a sick Mario"
         await client.send_message(message.channel, msg)
-    if message.content.startswith("pizza house") or message.content.startswith("plzza house"):
+    if message.content.startswith("pizza house"):
         msg = "BDubs is better"
         await client.send_message(message.channel, msg)
     if message.content.startswith("bdubs"):
