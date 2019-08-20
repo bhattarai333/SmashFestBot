@@ -176,7 +176,7 @@ async def on_message(message):
     if message.content.startswith("!mario"):
         msg = "J3 has a sick Mario"
         await client.send_message(message.channel, msg)
-    if message.content.startswith("pizza house") or message.content.startswith("plzza house") or message.content.startswith("pizzа house"):
+    if message.content.startswith("pizza house") or message.content.startswith("plzza house") or message.content.startswith("рizza housе"):
         msg = "BDubs is better"
         await client.send_message(message.channel, msg)
     if message.content.startswith("bdubs"):
