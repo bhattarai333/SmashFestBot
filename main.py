@@ -118,7 +118,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
 
 bdubs_emoji = "Yay BDubs"
-version = "**SmashFest Bot v3.1.9**"
+version = "**SmashFest Bot v3.1.10**"
 pickle_counter = 0
 
 
@@ -277,6 +277,9 @@ async def on_message(message):
         await client.send_message(message.channel, msg)
     if message.content.startswith("!nog"):
         msg = "https://raw.githubusercontent.com/bhattarai333/bhattarai333.github.io/master/docs/Resources/memes/nog.jpg"
+        await client.send_message(message.channel, msg)
+    if message.content.startswith("!slap"):
+        msg = "https://raw.githubusercontent.com/bhattarai333/bhattarai333.github.io/master/docs/Resources/memes/slap.jpg"
         await client.send_message(message.channel, msg)
     if message.content.startswith("!nofun"):
         msg = "https://raw.githubusercontent.com/bhattarai333/bhattarai333.github.io/master/docs/Resources/memes/president.png"
