@@ -118,7 +118,7 @@ Client = discord.Client()
 client = commands.Bot(command_prefix = "!")
 
 bdubs_emoji = "Yay BDubs"
-version = "You are currently speaking with: **SmashFest Bot v3.1.10**"
+version = "You are currently speaking with: **SmashFest Bot v3.2.0**"
 pickle_counter = 0
 
 
@@ -387,7 +387,9 @@ async def on_message(message):
         global weekly_prereg_link
         weekly_prereg_link = full_string
         save_data()
-
+    if message.content.startswith("!clearpriyank"):
+        smashfests.clear()
+        save_data()
 
     if message.content.startswith("!facebook"):
         msg = "https://www.facebook.com/groups/MSUSmashUlt/"
